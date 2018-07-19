@@ -35,6 +35,10 @@ const OAUTH_APP_NAME = Platform.select({
   android: 'mobilegithubpushnotificationsandroid',
 })
 
+const OAUTH_PROVIDER = 'github'
+
+const OAUTH_SCOPES = { scope: 'notifications,read:user' }
+
 type Props = {};
 export default class App extends Component<Props> {
 
@@ -67,8 +71,18 @@ export default class App extends Component<Props> {
     //   const { accounts: accounts2 } = await this.manager.savedAccounts()
     //   console.log('account list: ', accounts2);
     // } catch (err) {}
-    const res = await this.manager.authorize('github', { scopes: 'notifications,read:user' })
-    console.log('res', res);
+    const { response: { credentials: { accessToken: token } } } = await this.manager.authorize(OAUTH_PROVIDER, OAUTH_SCOPES)
+    console.log('token', token);
+
+    const res2 = await (await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token })
+    })).json()
+    console.log('res2', res2);
   }
 
   render() {
