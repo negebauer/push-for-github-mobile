@@ -1,4 +1,6 @@
 rootProject.name = 'GithubPushNotificationsMobile'
+include ':react-native-config'
+project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
 include ':react-native-oauth'
 project(':react-native-oauth').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-oauth/android')
 

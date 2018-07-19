@@ -7,4 +7,5 @@ target 'GithubPushNotificationsMobile' do
 
   # Pods for GithubPushNotificationsMobile
   pod 'DCTAuth', git: 'https://github.com/danielctull/DCTAuth.git'
+  # pod 'react-native-config', :path => '../node_modules/react-native-config'
 end
