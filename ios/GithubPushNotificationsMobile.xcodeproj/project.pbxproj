@@ -1219,7 +1219,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.negebauer.github-push-notifications-mobile";
+				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.githubPushNotificationsMobile;
 				PRODUCT_NAME = GithubPushNotificationsMobile;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1240,7 +1240,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.negebauer.github-push-notifications-mobile";
+				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.githubPushNotificationsMobile;
 				PRODUCT_NAME = GithubPushNotificationsMobile;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
