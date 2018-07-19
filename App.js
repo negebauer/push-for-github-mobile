@@ -9,6 +9,9 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 import OAuthManager from 'react-native-oauth';
+import Config from 'react-native-config'
+
+const { API_URL } = Config
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -73,8 +76,8 @@ export default class App extends Component<Props> {
     // } catch (err) {}
     const { response: { credentials: { accessToken: token } } } = await this.manager.authorize(OAUTH_PROVIDER, OAUTH_SCOPES)
     console.log('token', token);
-
-    const res2 = await (await fetch('http://localhost:3000/login', {
+    console.log('API_URL', API_URL);
+    const res2 = await (await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
