@@ -12,6 +12,7 @@ import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
 import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
 import LoadingView from './components/LoadingView'
+import Notifications from './Notifications'
 
 export default class App extends Component {
 
@@ -82,11 +83,13 @@ export default class App extends Component {
       )
     }
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>{`username: ${this.state.username}`}</Text>
-        <Text style={styles.welcome}>{`avatarUrl: ${this.state.avatarUrl}`}</Text>
-        <Text style={styles.welcome}>{`token: ${this.state.token}`}</Text>
-      </View>
+      <Notifications>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>{`username: ${this.state.username}`}</Text>
+          <Text style={styles.welcome}>{`avatarUrl: ${this.state.avatarUrl}`}</Text>
+          <Text style={styles.welcome}>{`token: ${this.state.token}`}</Text>
+        </View>
+      </Notifications>
     );
   }
 }
