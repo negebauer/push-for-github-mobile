@@ -10,60 +10,44 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
+import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
+import LoadingView from './components/LoadingView'
 
-const { API_URL } = Config
+export default class App extends Component {
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-const OAUTH_CONFIG =  {
-  github: {
-    client_id: Platform.select({
-      ios: 'c8540af149a6bfe38a42',
-      android: '075e7aaa056d3cb2c1ff'
-    }),
-    client_secret: Platform.select({
-      ios: 'e4d6e5d8787d1acf145ecd8f53a92b4de25cf0c5',
-      android: '3ca8451b4da98a11f14fc4711f9b2dff327ba009'
-    }),
-  },
-}
-
-const OAUTH_APP_NAME = Platform.select({
-  ios: 'mobilegithubpushnotificationsios',
-  android: 'mobilegithubpushnotificationsandroid',
-})
-
-const OAUTH_PROVIDER = 'github'
-
-const OAUTH_SCOPES = { scope: 'notifications,read:user' }
-
-type Props = {};
-export default class App extends Component<Props> {
-
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.manager = new OAuthManager(OAUTH_APP_NAME)
-    console.log(this.manager);
+    this.state = {
+      loading: true,
+      token: undefined,
+      username: undefined,
+      avatarUrl: undefined,
+    }
   }
 
   componentDidMount() {
     this.manager.configure(OAUTH_CONFIG);
-    console.log(this.manager);
-    Linking.addEventListener('url', this.handleOpenURL);
-    this.work()
+    this.loadData()
   }
 
-  componentWillUnmount() {
-    Linking.removeEventListener('url', this.handleOpenURL);
-  }
-
-  handleOpenURL = (event) => {
-    console.log(event.url);
+  loadData = async () => {
+    const { accounts } = await this.manager.savedAccounts()
+    console.log('accounts', accounts);
+    if (accounts.length === 0) return this.setState({ loading: false })
+    const { response: { credentials: { accessToken: token } } } = accounts[0]
+    try {
+      const { username, avatarUrl } = await (await fetch(`${Config.API_URL}/login`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token })
+      })).json()
+      this.setState({ token, username, avatarUrl })
+    } catch (err) { console.error('err', err) }
+    this.setState({ loading: false })
   }
 
   work = async () => {
@@ -89,11 +73,19 @@ export default class App extends Component<Props> {
   }
 
   render() {
+    if (this.state.loading) return <LoadingView />
+    if (!this.state.loading && !this.state.token) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.welcome}>We should do login</Text>
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>{`username: ${this.state.username}`}</Text>
+        <Text style={styles.welcome}>{`avatarUrl: ${this.state.avatarUrl}`}</Text>
+        <Text style={styles.welcome}>{`token: ${this.state.token}`}</Text>
       </View>
     );
   }
@@ -110,10 +102,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
