@@ -6,16 +6,27 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
+import React from 'react';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
 import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
 import LoadingView from './components/LoadingView'
 import Notifications from './Notifications'
 
-export default class App extends Component {
+async function apiLogin(token) {
+  const { username, avatarUrl } = await (await fetch(`${Config.API_URL}/login`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token }),
+  })).json()
+  return { username, avatarUrl }
+}
 
+export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.manager = new OAuthManager(OAUTH_APP_NAME)
@@ -24,70 +35,62 @@ export default class App extends Component {
       token: undefined,
       username: undefined,
       avatarUrl: undefined,
+      error: undefined,
     }
   }
 
   componentDidMount() {
     this.manager.configure(OAUTH_CONFIG);
-    this.loadData()
+    this.loadAccount()
   }
 
-  loadData = async () => {
+  loadAccount = async () => {
     const { accounts } = await this.manager.savedAccounts()
-    console.log('accounts', accounts);
     if (accounts.length === 0) return this.setState({ loading: false })
     const { response: { credentials: { accessToken: token } } } = accounts[0]
+    return this.login(token)
+  }
+
+  authorize = async () => {
+    this.setState({ loading: true })
+    const { response: { credentials: {
+      accessToken: token
+    } } } = await this.manager.authorize(OAUTH_PROVIDER, OAUTH_SCOPES)
+    return this.login(token)
+  }
+
+  login = async (token) => {
     try {
-      const { username, avatarUrl } = await (await fetch(`${Config.API_URL}/login`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token })
-      })).json()
+      const { username, avatarUrl } = await apiLogin(token)
       this.setState({ token, username, avatarUrl })
-    } catch (err) { console.error('err', err) }
+    } catch (error) {
+      console.log('login error', error);
+      this.setState({ error })
+    }
     this.setState({ loading: false })
   }
 
-  work = async () => {
-    const { accounts } = await this.manager.savedAccounts()
-    console.log('account list: ', accounts);
-    // try {
-    //   await this.manager.deauthorize('github')
-    //   const { accounts: accounts2 } = await this.manager.savedAccounts()
-    //   console.log('account list: ', accounts2);
-    // } catch (err) {}
-    const { response: { credentials: { accessToken: token } } } = await this.manager.authorize(OAUTH_PROVIDER, OAUTH_SCOPES)
-    console.log('token', token);
-    console.log('API_URL', API_URL);
-    const res2 = await (await fetch(`${API_URL}/login`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ token })
-    })).json()
-    console.log('res2', res2);
-  }
+  logout = () => this.manager.deauthorize(OAUTH_PROVIDER)
+    .then(() => this.setState({ loading: false, token: undefined }))
 
   render() {
-    if (this.state.loading) return <LoadingView />
-    if (!this.state.loading && !this.state.token) {
+    const { loading, token, username, avatarUrl, error } = this.state
+    if (loading) return <LoadingView />
+    if (!loading && !token) {
       return (
         <View style={styles.container}>
-          <Text style={styles.welcome}>We should do login</Text>
+          <Button onPress={this.authorize} title="Login" />
+          {error && <Text>{error.message}</Text>}
         </View>
       )
     }
     return (
-      <Notifications>
+      <Notifications token={token}>
         <View style={styles.container}>
-          <Text style={styles.welcome}>{`username: ${this.state.username}`}</Text>
-          <Text style={styles.welcome}>{`avatarUrl: ${this.state.avatarUrl}`}</Text>
-          <Text style={styles.welcome}>{`token: ${this.state.token}`}</Text>
+          <Text style={styles.welcome}>{`username: ${username}`}</Text>
+          <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
+          <Text style={styles.welcome}>{`token: ${token}`}</Text>
+          <Button onPress={this.logout} title="Logout" />
         </View>
       </Notifications>
     );
