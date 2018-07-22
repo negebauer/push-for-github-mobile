@@ -18,6 +18,7 @@ export default class Notifications extends React.Component {
 
   configure = () => {
     this.setState({ loading: true })
+    if (DeviceInfo.isEmulator()) return this.setState({ loading: false })
     PushNotification.configure({
       onRegister: this.onRegister,
       onNotification: this.receiveNotification,
@@ -37,21 +38,21 @@ export default class Notifications extends React.Component {
     console.log('Notifications token: ', token)
     const data = {
       token,
-      applicationName: getApplicationName(),
-      brand: getBrand(),
-      buildNumber: getBuildNumber(),
-      bundleId: getBundleId(),
-      carrier: getCarrier(),
-      deviceCountry: getDeviceCountry(),
-      deviceId: getDeviceId(),
-      deviceName: getDeviceName(),
-      manufacturer: getManufacturer(),
-      model: getModel(),
-      readableVersion: getReadableVersion(),
-      systemName: getSystemName(),
-      systemVersion: getSystemVersion(),
-      timezone: getTimezone(),
-      uid: getUniqueID(),
+      applicationName: DeviceInfo.getApplicationName(),
+      brand: DeviceInfo.getBrand(),
+      buildNumber: DeviceInfo.getBuildNumber(),
+      bundleId: DeviceInfo.getBundleId(),
+      carrier: DeviceInfo.getCarrier(),
+      deviceCountry: DeviceInfo.getDeviceCountry(),
+      deviceId: DeviceInfo.getDeviceId(),
+      deviceName: DeviceInfo.getDeviceName(),
+      manufacturer: DeviceInfo.getManufacturer(),
+      model: DeviceInfo.getModel(),
+      readableVersion: DeviceInfo.getReadableVersion(),
+      systemName: DeviceInfo.getSystemName(),
+      systemVersion: DeviceInfo.getSystemVersion(),
+      timezone: DeviceInfo.getTimezone(),
+      uid: DeviceInfo.getUniqueID(),
     }
     // Call api to register device
     this.setState({ loading: false })
@@ -69,7 +70,7 @@ export default class Notifications extends React.Component {
   }
 
   render() {
-    if (this.state.loading) return <LoadingView text="Checking notifications" />
+    if (this.state.loading) return <LoadingView text="Configuring notifications" />
     else if (this.state.error) {
       return (
         <View>
