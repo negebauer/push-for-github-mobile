@@ -1,5 +1,6 @@
 ios/GithubPushNotificationsMobile.xcworkspace
 .env
+ios/*.dSYM.zip
 
 # OSX
 #
