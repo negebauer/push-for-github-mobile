@@ -819,6 +819,9 @@
 						DevelopmentTeam = BJJKE72WM4;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -1487,7 +1490,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
 				PRODUCT_NAME = GithubPushNotificationsMobile;
-				PROVISIONING_PROFILE = "5f5aeded-300a-4e6d-9725-fdcea622d40b";
+				PROVISIONING_PROFILE = "181d9179-399b-44c9-a180-517b5c5f28ac";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1521,7 +1524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
 				PRODUCT_NAME = GithubPushNotificationsMobile;
-				PROVISIONING_PROFILE = "f4128eed-ee1f-44ef-956f-482dcac03b30";
+				PROVISIONING_PROFILE = "df03e350-df42-4134-bb3b-71c70ccb1c1c";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
