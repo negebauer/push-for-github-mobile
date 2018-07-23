@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, PushNotificationIOS, Platform } from 'react-native'
+import { View, Text, PushNotificationIOS, Platform, Linking } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import DeviceInfo from 'react-native-device-info'
 import Config from 'react-native-config'
@@ -30,6 +30,7 @@ export default class Notifications extends React.Component {
 
   componentWillMount = () => {
     this.configure()
+    if (Platform.OS === 'ios') PushNotification.setApplicationIconBadgeNumber(0)
   }
 
   configure = () => {
@@ -75,18 +76,19 @@ export default class Notifications extends React.Component {
     this.setState({ loading: false })
   }
 
-  receiveNotification = (notification) => {
+  receiveNotification = ({ userInteraction, data: rawData, payload, finish }) => {
     /*
       foreground: false, // BOOLEAN: If the notification was received in foreground or not
       userInteraction: false, // BOOLEAN: If the notification was opened by the user from the notification area or not
       message: 'My Notification Message', // STRING: The notification message
       data: {}, // OBJECT: The push data
     */
-    console.log('receiveNotification', notification);
-    const { foreground, userInteraction, message, data: rawData, payload } = notification
     const data = rawData || JSON.parse(payload)
-    console.log('received notification', { message, data });
-    if (Platform.OS === 'ios') notification.finish(PushNotificationIOS.FetchResult.NoData)
+    const { url, type } = data
+    if (url && userInteraction && type === 'NEW_NOTIFICATION') {
+      Linking.canOpenURL(url).then(supported => supported && Linking.openURL(url))
+    }
+    if (Platform.OS === 'ios') finish(PushNotificationIOS.FetchResult.NoData)
   }
 
   render() {
