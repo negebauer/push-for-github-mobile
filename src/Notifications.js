@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text } from 'react-native'
+import { View, Text, PushNotificationIOS, Platform } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import DeviceInfo from 'react-native-device-info'
 import Config from 'react-native-config'
@@ -18,7 +18,7 @@ export default class Notifications extends React.Component {
 
   configure = () => {
     this.setState({ loading: true })
-    if (DeviceInfo.isEmulator()) return this.setState({ loading: false })
+    if (DeviceInfo.isEmulator()) this.setState({ loading: false })
     PushNotification.configure({
       onRegister: this.onRegister,
       onNotification: this.receiveNotification,
@@ -34,7 +34,7 @@ export default class Notifications extends React.Component {
   }
 
   onRegister = ({ token }) => {
-    const { token: accessToken } = this.props
+    const { token: accessToken, onNotificationsFailed } = this.props
     console.log('Notifications token: ', token)
     const data = {
       token,
@@ -54,7 +54,9 @@ export default class Notifications extends React.Component {
       timezone: DeviceInfo.getTimezone(),
       uid: DeviceInfo.getUniqueID(),
     }
-    // Call api to register device
+    try {
+      // Call api to register device
+    } catch (err) { onNotificationsFailed(err) }
     this.setState({ loading: false })
   }
 
@@ -67,10 +69,11 @@ export default class Notifications extends React.Component {
     */
     const data = rawData || JSON.parse(payload)
     console.log('received notification', { message, data });
+    if (Platform.OS === 'ios') notification.finish(PushNotificationIOS.FetchResult.NoData)
   }
 
   render() {
-    if (this.state.loading) return <LoadingView text="Configuring notifications" />
+    if (this.state.loading) return <LoadingView text="Setting up notifications" />
     else if (this.state.error) {
       return (
         <View>
@@ -84,4 +87,9 @@ export default class Notifications extends React.Component {
 
 Notifications.propTypes = {
   token: PropTypes.string.isRequired,
+  onNotificationsFailed: PropTypes.func,
+}
+
+Notifications.defaulProps = {
+  onNotificationsFailed: () => {},
 }

@@ -73,8 +73,14 @@ export default class App extends React.Component {
   logout = () => this.manager.deauthorize(OAUTH_PROVIDER)
     .then(() => this.setState({ loading: false, token: undefined }))
 
+  notificationsFailed = (notificationsError) => this.setState({ notificationsError })
+
+  notificationsSetup = () => this.setState({ loading: true }, () =>
+    this.setState({ loading: false })
+  )
+
   render() {
-    const { loading, token, username, avatarUrl, error } = this.state
+    const { loading, token, username, avatarUrl, error, notificationsError } = this.state
     if (loading) return <LoadingView />
     if (!loading && !token) {
       return (
@@ -85,12 +91,18 @@ export default class App extends React.Component {
       )
     }
     return (
-      <Notifications token={token}>
+      <Notifications token={token} onNotificationsFailed={this.notificationsFailed}>
         <View style={styles.container}>
           <Text style={styles.welcome}>{`username: ${username}`}</Text>
           <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
           <Text style={styles.welcome}>{`token: ${token}`}</Text>
           <Button onPress={this.logout} title="Logout" />
+          {notificationsError &&
+            <View>
+              <Text>{`notificationsError: ${notificationsError.message}`}</Text>
+              <Button onPress={this.notificationsSetup} title="Activate notifications" />
+            </View>
+          }
         </View>
       </Notifications>
     );
