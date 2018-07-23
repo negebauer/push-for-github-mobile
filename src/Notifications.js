@@ -42,7 +42,7 @@ export default class Notifications extends React.Component {
       senderID: Config.GCM_SENDER_ID || 'NOT_IMPLEMENTED', // TODO: Obtain GCM_SENDER_ID
       permissions: {
         alert: true,
-        badge: true,
+        // badge: true,
         sound: true,
       },
       popInitialNotification: true,
