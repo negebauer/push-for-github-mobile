@@ -81,7 +81,7 @@ export default class App extends React.Component {
 
   render() {
     const { loading, token, username, avatarUrl, error, notificationsError } = this.state
-    if (loading) return <LoadingView />
+    if (loading) return <LoadingView text="Loading account"/>
     if (!loading && !token) {
       return (
         <View style={styles.container}>
