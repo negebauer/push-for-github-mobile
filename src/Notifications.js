@@ -6,6 +6,23 @@ import DeviceInfo from 'react-native-device-info'
 import Config from 'react-native-config'
 import LoadingView from './components/LoadingView'
 
+async function registerDevice(data, token) {
+  const response = await fetch(`${Config.API_URL}/devices`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `token ${token}`
+    },
+    body: JSON.stringify(data),
+  })
+  console.log('response', response);
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+}
+
 export default class Notifications extends React.Component {
   constructor() {
     super()
@@ -33,10 +50,9 @@ export default class Notifications extends React.Component {
     })
   }
 
-  onRegister = ({ token }) => {
+  onRegister = async ({ token }) => {
     const { token: accessToken, onNotificationsFailed } = this.props
-    console.log('Notifications token: ', token)
-    const data = {
+    const deviceData = {
       token,
       applicationName: DeviceInfo.getApplicationName(),
       brand: DeviceInfo.getBrand(),
@@ -55,7 +71,7 @@ export default class Notifications extends React.Component {
       uid: DeviceInfo.getUniqueID(),
     }
     try {
-      // Call api to register device
+      await registerDevice(deviceData, accessToken)
     } catch (err) { onNotificationsFailed(err) }
     this.setState({ loading: false })
   }

@@ -75,7 +75,7 @@ export default class App extends React.Component {
 
   notificationsFailed = (notificationsError) => this.setState({ notificationsError })
 
-  notificationsSetup = () => this.setState({ loading: true }, () =>
+  notificationsSetup = () => this.setState({ loading: true, notificationsError: undefined }, () =>
     this.setState({ loading: false })
   )
 
@@ -85,6 +85,7 @@ export default class App extends React.Component {
     if (!loading && !token) {
       return (
         <View style={styles.container}>
+          <Text style={styles.welcome}>{`API_URL: ${Config.API_URL}`}</Text>
           <Button onPress={this.authorize} title="Login" />
           {error && <Text>{error.message}</Text>}
         </View>
@@ -93,13 +94,14 @@ export default class App extends React.Component {
     return (
       <Notifications token={token} onNotificationsFailed={this.notificationsFailed}>
         <View style={styles.container}>
+          <Text style={styles.welcome}>{`API_URL: ${Config.API_URL}`}</Text>
           <Text style={styles.welcome}>{`username: ${username}`}</Text>
           <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
           <Text style={styles.welcome}>{`token: ${token}`}</Text>
           <Button onPress={this.logout} title="Logout" />
           {notificationsError &&
             <View>
-              <Text>{`notificationsError: ${notificationsError.message}`}</Text>
+              <Text style={styles.welcome}>{`notificationsError: ${notificationsError.message}`}</Text>
               <Button onPress={this.notificationsSetup} title="Activate notifications" />
             </View>
           }
