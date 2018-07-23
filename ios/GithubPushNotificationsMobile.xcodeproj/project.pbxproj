@@ -1524,7 +1524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
 				PRODUCT_NAME = GithubPushNotificationsMobile;
-				PROVISIONING_PROFILE = "df03e350-df42-4134-bb3b-71c70ccb1c1c";
+				PROVISIONING_PROFILE = "c53af478-15b2-4e9b-a4ff-692cbba56f57";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
