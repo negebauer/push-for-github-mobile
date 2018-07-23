@@ -16,7 +16,6 @@ async function registerDevice(data, token) {
     },
     body: JSON.stringify(data),
   })
-  console.log('response', response);
   if (!response.ok) {
     const error = await response.json()
     throw error
