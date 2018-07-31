@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "simulators": "yarn ios & yarn android",
-    "test": "jest"
+    "test": "jest",
+    "icon": "app-icon generate --icon assets/icon.png"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
@@ -19,6 +20,7 @@
     "react-native-push-notification": "^3.0.2"
   },
   "devDependencies": {
+    "app-icon": "^0.6.3",
     "babel-jest": "23.4.0",
     "babel-preset-react-native": "^5",
     "jest": "23.4.1",
