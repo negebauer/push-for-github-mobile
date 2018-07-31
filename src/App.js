@@ -15,15 +15,21 @@ import LoadingView from './components/LoadingView'
 import Notifications from './Notifications'
 
 async function apiLogin(token) {
-  const { username, avatarUrl } = await (await fetch(`${Config.API_URL}/login`, {
+  const response = await fetch(`${Config.API_URL}/login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ token }),
-  })).json()
-  return { username, avatarUrl }
+  })
+  if (!response.ok) {
+    const text = await response.text()
+    throw { text, status: response.status }
+  } else {
+    const { username, avatarUrl } = await response.json()
+    return { username, avatarUrl }
+  }
 }
 
 export default class App extends React.Component {
@@ -64,6 +70,7 @@ export default class App extends React.Component {
       const { username, avatarUrl } = await apiLogin(token)
       this.setState({ token, username, avatarUrl })
     } catch (error) {
+      if (error.status === 401) return this.logout().then(this.authorize)
       console.log('login error', error);
       this.setState({ error })
     }
