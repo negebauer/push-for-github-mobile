@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "simulators": "yarn ios & yarn android",
-    "test": "jest"
+    "test": "jest",
+    "icon": "app-icon generate --icon assets/icon.png"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
