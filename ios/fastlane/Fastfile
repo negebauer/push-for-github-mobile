@@ -18,7 +18,7 @@ skip_docs
 
 def version_code
   commit_count = sh('git rev-list --count master')
-  Integer(commit_count) + 87
+  Integer(commit_count) - 32
 end
 
 platform :ios do
@@ -37,6 +37,14 @@ platform :ios do
   end
 
   lane :beta_ci do
+    changelog = changelog_from_git_commits
+    upload_to_testflight changelog: changelog
+  end
+
+  lane :build_and_beta do
+    match type: 'appstore'
+    increment_build_number build_number: version_code
+    build_app
     changelog = changelog_from_git_commits
     upload_to_testflight changelog: changelog
   end
