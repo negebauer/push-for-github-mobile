@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, Alert } from 'react-native';
 import { Sentry } from 'react-native-sentry'
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
@@ -95,6 +95,18 @@ export default class App extends React.Component {
     this.setState({ loading: false })
   )
 
+  handleUrl = url => Alert.alert(
+    'Open notification url',
+    url,
+    [
+      { text: 'Cancel', onPress: () => {}, style: 'cancel' },
+      { text: 'Open', onPress: () => this.openURL(url) },
+    ],
+    { cancelable: false }
+  )
+
+  openUrl = url => Linking.canOpenURL(url).then(isSupported => Linking.openURL(url))
+
   render() {
     const { loading, token, username, avatarUrl, loginError, notificationsError } = this.state
     if (loading) return <LoadingView text="Loading account"/>
@@ -112,7 +124,11 @@ export default class App extends React.Component {
       )
     }
     return (
-      <Notifications token={token} onNotificationsFailed={this.notificationsFailed}>
+      <Notifications
+        token={token}
+        onNotificationsFailed={this.notificationsFailed}
+        onUrl={this.handleUrl}
+      >
         <View style={styles.background}>
           <View style={styles.logoutContainer}>
             <TouchableOpacity style={styles.logoutButton} onPress={this.logout}>

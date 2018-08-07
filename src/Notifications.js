@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, PushNotificationIOS, Platform, Linking, Alert } from 'react-native'
+import { View, Text, PushNotificationIOS, Platform } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import DeviceInfo from 'react-native-device-info'
 import Config from 'react-native-config'
@@ -85,20 +85,7 @@ export default class Notifications extends React.Component {
       data: {}, // OBJECT: The push data
     */
     const { url, type } = data
-    if (url && userInteraction && type === 'NEW_NOTIFICATION') {
-      Linking.canOpenURL(url).then(isSupported => {
-        if (!isSupported) return
-        Alert.alert(
-          'Open notification url',
-          url,
-          [
-            { text: 'Cancel', onPress: () => {}, style: 'cancel' },
-            { text: 'Open', onPress: () => Linking.openURL(url) },
-          ],
-          { cancelable: false }
-        )}
-      )
-    }
+    if (url && userInteraction && type === 'NEW_NOTIFICATION') this.props.onUrl(url)
     if (Platform.OS === 'ios') finish(PushNotificationIOS.FetchResult.NoData)
   }
 
@@ -117,9 +104,11 @@ export default class Notifications extends React.Component {
 
 Notifications.propTypes = {
   token: PropTypes.string.isRequired,
-  onNotificationsFailed: PropTypes.func,
+  onUrl: PropTypes.func.isRequired,
+  onNotificationsFailed: PropTypes.func.isRequired,
 }
 
 Notifications.defaulProps = {
+  onUrl: () => {},
   onNotificationsFailed: () => {},
 }
