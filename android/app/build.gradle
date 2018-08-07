@@ -94,6 +94,8 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def pass = getPassword("github-push-notifications-mobile-android-keystore")
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -108,6 +110,16 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+      release {
+        if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+          storeFile file(MYAPP_RELEASE_STORE_FILE)
+          storePassword pass
+          keyAlias MYAPP_RELEASE_KEY_ALIAS
+          keyPassword pass
+        }
+      }
+    }
     splits {
         abi {
             reset()
@@ -120,6 +132,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
