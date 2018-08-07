@@ -7,14 +7,15 @@
  */
 
 import React from 'react';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Sentry } from 'react-native-sentry'
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
 import DeviceInfo from 'react-native-device-info'
 import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
-import LoadingView from './components/LoadingView'
+import { color1, color2, color3, color4, color5 } from './config/colors'
 import Notifications from './Notifications'
+import LoadingView from './components/LoadingView'
 
 async function apiLogin(token) {
   const response = await fetch(`${Config.API_URL}/login`, {
@@ -43,7 +44,9 @@ export default class App extends React.Component {
       token: undefined,
       username: undefined,
       avatarUrl: undefined,
-      error: undefined,
+      loginError: undefined,
+      // notificationsError: new Error('asd'),
+      notificationsError: undefined,
     }
   }
 
@@ -74,7 +77,7 @@ export default class App extends React.Component {
       Sentry.setUserContext({ username })
     } catch (error) {
       if (error.status === 401) return this.logout().then(this.authorize)
-      this.setState({ error })
+      this.setState({ loginError: error })
       Sentry.captureException(error)
     }
     this.setState({ loading: false })
@@ -93,33 +96,43 @@ export default class App extends React.Component {
   )
 
   render() {
-    const { loading, token, username, avatarUrl, error, notificationsError } = this.state
+    const { loading, token, username, avatarUrl, loginError, notificationsError } = this.state
     if (loading) return <LoadingView text="Loading account"/>
     if (!loading && !token) {
       return (
-        <View style={styles.container}>
-          <Text style={styles.welcome}>{`API_URL: ${Config.API_URL}`}</Text>
-          <Button onPress={this.authorize} title="Login" />
-          {error && <Text>{error.message}</Text>}
+        <View style={styles.loginBackground}>
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginText}>Log in with github to activate push notifications</Text>
+            <TouchableOpacity style={styles.loginButton} onPress={this.authorize}>
+              <Text style={styles.loginButtonText}>Log in</Text>
+            </TouchableOpacity>
+            {loginError && <Text style={styles.loginError}>{loginError.message}</Text>}
+          </View>
         </View>
       )
     }
     return (
       <Notifications token={token} onNotificationsFailed={this.notificationsFailed}>
-        <View style={styles.container}>
-          <Text style={styles.welcome}>{`API_URL: ${Config.API_URL}`}</Text>
-          <Text style={styles.welcome}>{`username: ${username}`}</Text>
-          <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
-          <Text style={styles.welcome}>{`token: ${token}`}</Text>
-          <Text style={styles.welcome}>{`version: ${DeviceInfo.getReadableVersion()}`}</Text>
-          <Text style={styles.welcome}>{`build: ${DeviceInfo.getBuildNumber()}`}</Text>
-          <Button onPress={this.logout} title="Logout" />
-          {notificationsError &&
-            <View>
-              <Text style={styles.welcome}>{`notificationsError: ${notificationsError.message}`}</Text>
-              <Button onPress={this.notificationsSetup} title="Activate notifications" />
-            </View>
-          }
+        <View style={styles.background}>
+          <View style={styles.logoutContainer}>
+            <TouchableOpacity style={styles.logoutButton} onPress={this.logout}>
+              <Text style={styles.logoutText}>Logout</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.container}>
+            <Image style={styles.avatar} source={{ uri: avatarUrl }}/>
+            <Text style={styles.username}>{username}</Text>
+            {!notificationsError && <Text style={styles.subtitle}>Notifications active</Text>}
+            {notificationsError &&
+              <>
+                <Text style={styles.notificationsError}>{`Notifications failed\n${notificationsError.message}`}</Text>
+                <TouchableOpacity style={styles.notificationsRetryButton} onPress={this.notificationsSetup}>
+                  <Text style={styles.notificationsRetryText}>Activate notifications</Text>
+                </TouchableOpacity>
+              </>
+            }
+            <Text style={styles.data}>{`Github Push v${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`}</Text>
+          </View>
         </View>
       </Notifications>
     );
@@ -127,15 +140,99 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  loginBackground: {
+    backgroundColor: color1,
+    width: '100%',
+    height: '100%',
+  },
+  loginContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  loginText: {
+    color: color3,
+    fontSize: 24,
+    textAlign: 'center',
+    margin: 16,
+  },
+  loginButton: {
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 16,
+    paddingLeft: 16,
+    backgroundColor: color5,
+    borderRadius: 16,
+  },
+  loginButtonText: {
+    color: color4,
+    fontSize: 24,
+  },
+  loginError: {
+    color: color3,
+    fontSize: 24,
+  },
+  background: {
+    backgroundColor: color2,
+    width: '100%',
+    height: '100%',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginBottom: 64,
   },
-  welcome: {
-    fontSize: 20,
+  avatar: {
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    margin: 8,
+  },
+  username: {
+    color: color4,
+    fontSize: 32,
+    margin: 8,
+  },
+  subtitle: {
+    color: color3,
     textAlign: 'center',
-    margin: 10,
+    fontSize: 24,
+    margin: 16,
+  },
+  data: {
+    color: color3,
+    textAlign: 'center',
+    fontSize: 16,
+    margin: 16,
+  },
+  notificationsError: {
+    color: color5,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  notificationsRetryButton: {
+    padding: 8,
+    margin: 16,
+    backgroundColor: color5,
+    borderRadius: 16,
+  },
+  notificationsRetryText: {
+    color: color1,
+  },
+  logoutContainer: {
+    backgroundColor: color2,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  logoutButton: {
+    marginTop: 24,
+    marginLeft: 16,
+    padding: 8,
+  },
+  logoutText: {
+    color: color1,
+    fontSize: 16,
   },
 });
