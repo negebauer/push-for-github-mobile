@@ -13,8 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* GithubPushNotificationsMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */; };
-		0304D04D2105401B00A5470D /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0304D04A2105401200A5470D /* libRNDeviceInfo.a */; };
-		0309E6262100EFBB0048E15D /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0309E6252100EFB50048E15D /* libReactNativeConfig.a */; };
 		03C9C5372103E39100F6D3B7 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C9C51A2103E38700F6D3B7 /* libRCTPushNotification.a */; };
 		03E9801921194F290011F127 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E9801821194F200011F127 /* libRNSentry.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -40,11 +38,11 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* GithubPushNotificationsMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		48089E56D1E240C9B06A2ECE /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1107EAAE87D40909C0F683B /* libOAuthManager.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D0A02E5CF74945E5A2B4640C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1145B5FDB645F39F3FCC60 /* libz.tbd */; };
+		E9C12EF1848F4FD4BE933534 /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3014B61F764F6E87043193 /* libOAuthManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,30 +88,9 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = GithubPushNotificationsMobile;
 		};
-		0304D0492105401200A5470D /* PBXContainerItemProxy */ = {
+		036DAB722119785C0051CC8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
-			remoteInfo = RNDeviceInfo;
-		};
-		0304D04B2105401200A5470D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
-			remoteInfo = "RNDeviceInfo-tvOS";
-		};
-		0309E6242100EFB50048E15D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
-			remoteInfo = ReactNativeConfig;
-		};
-		03B782CD210050C400FA581D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE29E064CE7349B2A0AEF286 /* OAuthManager.xcodeproj */;
+			containerPortal = E69C1CE51B9C477FA3402AAD /* OAuthManager.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D91353961DA7849100AABC96;
 			remoteInfo = OAuthManager;
@@ -382,8 +359,6 @@
 		00E356EE1AD99517003FC87E /* GithubPushNotificationsMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubPushNotificationsMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubPushNotificationsMobileTests.m; sourceTree = "<group>"; };
-		0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
-		0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		03835BBB210043BC002FFCB4 /* GithubPushNotificationsMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GithubPushNotificationsMobile.entitlements; path = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements; sourceTree = "<group>"; };
 		03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		03E9801121194F200011F127 /* RNSentry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
@@ -398,6 +373,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GithubPushNotificationsMobile/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1C91DE9D55A1CCEFFF9AB2EA /* Pods-GithubPushNotificationsMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubPushNotificationsMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		1F3014B61F764F6E87043193 /* libOAuthManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libOAuthManager.a; sourceTree = "<group>"; };
 		27032726DCB05B01F92480D9 /* Pods-GithubPushNotificationsMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubPushNotificationsMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -407,8 +383,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		AE29E064CE7349B2A0AEF286 /* OAuthManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = OAuthManager.xcodeproj; path = "../node_modules/react-native-oauth/ios/OAuthManager.xcodeproj"; sourceTree = "<group>"; };
-		B1107EAAE87D40909C0F683B /* libOAuthManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libOAuthManager.a; sourceTree = "<group>"; };
+		E69C1CE51B9C477FA3402AAD /* OAuthManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = OAuthManager.xcodeproj; path = "../node_modules/react-native-oauth/ios/OAuthManager.xcodeproj"; sourceTree = "<group>"; };
 		E6A6D9E385F5B9C8FFC9ADC7 /* libPods-GithubPushNotificationsMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GithubPushNotificationsMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -426,9 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E9801921194F290011F127 /* libRNSentry.a in Frameworks */,
-				0304D04D2105401B00A5470D /* libRNDeviceInfo.a in Frameworks */,
 				03C9C5372103E39100F6D3B7 /* libRCTPushNotification.a in Frameworks */,
-				0309E6262100EFBB0048E15D /* libReactNativeConfig.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -443,8 +416,8 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				24838764DCD97F6372234B6F /* libPods-GithubPushNotificationsMobile.a in Frameworks */,
-				48089E56D1E240C9B06A2ECE /* libOAuthManager.a in Frameworks */,
 				D0A02E5CF74945E5A2B4640C /* libz.tbd in Frameworks */,
+				E9C12EF1848F4FD4BE933534 /* libOAuthManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,19 +506,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0304D01C2105401200A5470D /* Products */ = {
+		036DAB6F2119785C0051CC8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0304D04A2105401200A5470D /* libRNDeviceInfo.a */,
-				0304D04C2105401200A5470D /* libRNDeviceInfo-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0309E5FB2100EFB50048E15D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0309E6252100EFB50048E15D /* libReactNativeConfig.a */,
+				036DAB732119785C0051CC8A /* libOAuthManager.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -553,17 +517,9 @@
 		03835AD12100426F002FFCB4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				B1107EAAE87D40909C0F683B /* libOAuthManager.a */,
+				1F3014B61F764F6E87043193 /* libOAuthManager.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		03B782CA210050C400FA581D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03B782CE210050C400FA581D /* libOAuthManager.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		03C9C5082103E38700F6D3B7 /* Products */ = {
@@ -682,9 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				03E9801121194F200011F127 /* RNSentry.xcodeproj */,
-				0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */,
 				03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */,
-				0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -697,7 +651,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				AE29E064CE7349B2A0AEF286 /* OAuthManager.xcodeproj */,
+				E69C1CE51B9C477FA3402AAD /* OAuthManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -878,8 +832,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 03B782CA210050C400FA581D /* Products */;
-					ProjectRef = AE29E064CE7349B2A0AEF286 /* OAuthManager.xcodeproj */;
+					ProductGroup = 036DAB6F2119785C0051CC8A /* Products */;
+					ProjectRef = E69C1CE51B9C477FA3402AAD /* OAuthManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -934,14 +888,6 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 0309E5FB2100EFB50048E15D /* Products */;
-					ProjectRef = 0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */;
-				},
-				{
-					ProductGroup = 0304D01C2105401200A5470D /* Products */;
-					ProjectRef = 0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */;
-				},
-				{
 					ProductGroup = 03E9801221194F200011F127 /* Products */;
 					ProjectRef = 03E9801121194F200011F127 /* RNSentry.xcodeproj */;
 				},
@@ -992,32 +938,11 @@
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0304D04A2105401200A5470D /* libRNDeviceInfo.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNDeviceInfo.a;
-			remoteRef = 0304D0492105401200A5470D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0304D04C2105401200A5470D /* libRNDeviceInfo-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRNDeviceInfo-tvOS.a";
-			remoteRef = 0304D04B2105401200A5470D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0309E6252100EFB50048E15D /* libReactNativeConfig.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeConfig.a;
-			remoteRef = 0309E6242100EFB50048E15D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03B782CE210050C400FA581D /* libOAuthManager.a */ = {
+		036DAB732119785C0051CC8A /* libOAuthManager.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOAuthManager.a;
-			remoteRef = 03B782CD210050C400FA581D /* PBXContainerItemProxy */;
+			remoteRef = 036DAB722119785C0051CC8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		03C9C51A2103E38700F6D3B7 /* libRCTPushNotification.a */ = {

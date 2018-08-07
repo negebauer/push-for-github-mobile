@@ -3,11 +3,11 @@ package com.negebauer.GithubPushNotificationsMobile;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import io.sentry.RNSentryPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import io.fullstack.oauth.OAuthManagerPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import io.sentry.RNSentryPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
-            new RNSentryPackage(),
+        new RNSentryPackage(),
         new RNDeviceInfo(),
         new ReactNativePushNotificationPackage(),
         new ReactNativeConfigPackage(),
