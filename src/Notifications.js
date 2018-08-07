@@ -85,11 +85,11 @@ export default class Notifications extends React.Component {
       data: {}, // OBJECT: The push data
     */
     Sentry.captureBreadcrumb({ category: 'receiveNotification', data: notification })
-    const ({ userInteraction, data: rawData, payload, finish }) = notification
+    const { userInteraction, data: rawData, payload, finish } = notification
     const data = rawData || JSON.parse(payload)
     const { url, type } = data
     if (url && userInteraction && type === 'NEW_NOTIFICATION') {
-      Linking.canOpenURL(url).then(supported => supported && Linking.openURL(url))
+      Linking.canOpenURL(url).then(isSupported => isSupported && Linking.openURL(url))
     }
     if (Platform.OS === 'ios') finish(PushNotificationIOS.FetchResult.NoData)
   }
