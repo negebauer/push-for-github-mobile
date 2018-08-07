@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { Sentry } from 'react-native-sentry'
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
 import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
@@ -71,8 +72,8 @@ export default class App extends React.Component {
       this.setState({ token, username, avatarUrl })
     } catch (error) {
       if (error.status === 401) return this.logout().then(this.authorize)
-      console.log('login error', error);
       this.setState({ error })
+      Sentry.captureException(error)
     }
     this.setState({ loading: false })
   }
@@ -80,7 +81,10 @@ export default class App extends React.Component {
   logout = () => this.manager.deauthorize(OAUTH_PROVIDER)
     .then(() => this.setState({ loading: false, token: undefined }))
 
-  notificationsFailed = (notificationsError) => this.setState({ notificationsError })
+  notificationsFailed = (notificationsError) => {
+    this.setState({ notificationsError })
+    Sentry.captureException(notificationsError)
+  }
 
   notificationsSetup = () => this.setState({ loading: true, notificationsError: undefined }, () =>
     this.setState({ loading: false })
