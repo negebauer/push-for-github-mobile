@@ -20,4 +20,4 @@ export const OAUTH_APP_NAME = Platform.select({
 
 export const OAUTH_PROVIDER = 'github'
 
-export const OAUTH_SCOPES = { scope: 'notifications,read:user' }
+export const OAUTH_SCOPES = { scopes: 'notifications,read:user' }
