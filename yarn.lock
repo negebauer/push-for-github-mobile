@@ -4136,9 +4136,9 @@ react-native-device-info@^0.21.5:
   version "0.21.5"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.21.5.tgz#99478a2d68182e012297f2d63f2bd1b788106dee"
 
-react-native-oauth@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-oauth/-/react-native-oauth-2.2.0.tgz#8aa7fad344b22cd29f24a4c3385244684dbcbe9e"
+react-native-oauth@negebauer/react-native-oauth:
+  version "2.1.18"
+  resolved "https://codeload.github.com/negebauer/react-native-oauth/tar.gz/afaffc988abbc39044850f1a1a95979d19bfb950"
   dependencies:
     invariant "^2.2.1"
     valib "^2.0.0"
