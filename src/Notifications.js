@@ -76,13 +76,16 @@ export default class Notifications extends React.Component {
     this.setState({ loading: false })
   }
 
-  receiveNotification = ({ userInteraction, data: rawData, payload, finish }) => {
+  receiveNotification = notification => {
+  // receiveNotification = ({ userInteraction, data: rawData, payload, finish }) => {
     /*
       foreground: false, // BOOLEAN: If the notification was received in foreground or not
       userInteraction: false, // BOOLEAN: If the notification was opened by the user from the notification area or not
       message: 'My Notification Message', // STRING: The notification message
       data: {}, // OBJECT: The push data
     */
+    Sentry.captureBreadcrumb({ category: 'receiveNotification', data: notification })
+    const ({ userInteraction, data: rawData, payload, finish }) = notification
     const data = rawData || JSON.parse(payload)
     const { url, type } = data
     if (url && userInteraction && type === 'NEW_NOTIFICATION') {
