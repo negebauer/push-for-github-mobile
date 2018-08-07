@@ -111,6 +111,7 @@ export default class App extends React.Component {
           <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
           <Text style={styles.welcome}>{`token: ${token}`}</Text>
           <Text style={styles.welcome}>{`version: ${DeviceInfo.getReadableVersion()}`}</Text>
+          <Text style={styles.welcome}>{`build: ${DeviceInfo.getBuildNumber()}`}</Text>
           <Button onPress={this.logout} title="Logout" />
           {notificationsError &&
             <View>
