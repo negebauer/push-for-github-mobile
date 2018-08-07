@@ -71,6 +71,7 @@ export default class App extends React.Component {
     try {
       const { username, avatarUrl } = await apiLogin(token)
       this.setState({ token, username, avatarUrl })
+      Sentry.setUserContext({ username })
     } catch (error) {
       if (error.status === 401) return this.logout().then(this.authorize)
       this.setState({ error })
