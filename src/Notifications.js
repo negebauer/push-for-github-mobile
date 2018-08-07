@@ -39,7 +39,7 @@ export default class Notifications extends React.Component {
     PushNotification.configure({
       onRegister: this.onRegister,
       onNotification: this.receiveNotification,
-      senderID: Config.GCM_SENDER_ID || 'NOT_IMPLEMENTED', // TODO: Obtain GCM_SENDER_ID
+      senderID: Config.GCM_SENDER_ID,
       permissions: {
         alert: true,
         // badge: true,
