@@ -11,6 +11,7 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { Sentry } from 'react-native-sentry'
 import OAuthManager from 'react-native-oauth';
 import Config from 'react-native-config'
+import DeviceInfo from 'react-native-device-info'
 import { OAUTH_CONFIG, OAUTH_APP_NAME, OAUTH_PROVIDER, OAUTH_SCOPES } from './constants'
 import LoadingView from './components/LoadingView'
 import Notifications from './Notifications'
@@ -109,6 +110,7 @@ export default class App extends React.Component {
           <Text style={styles.welcome}>{`username: ${username}`}</Text>
           <Text style={styles.welcome}>{`avatarUrl: ${avatarUrl}`}</Text>
           <Text style={styles.welcome}>{`token: ${token}`}</Text>
+          <Text style={styles.welcome}>{`version: ${DeviceInfo.getReadableVersion()}`}</Text>
           <Button onPress={this.logout} title="Logout" />
           {notificationsError &&
             <View>
