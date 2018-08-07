@@ -16,6 +16,7 @@
 		0304D04D2105401B00A5470D /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0304D04A2105401200A5470D /* libRNDeviceInfo.a */; };
 		0309E6262100EFBB0048E15D /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0309E6252100EFB50048E15D /* libReactNativeConfig.a */; };
 		03C9C5372103E39100F6D3B7 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C9C51A2103E38700F6D3B7 /* libRCTPushNotification.a */; };
+		03E9801921194F290011F127 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E9801821194F200011F127 /* libRNSentry.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -110,13 +111,6 @@
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
 		};
-		03A405B221193BB100258F1C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03A4058121193BB100258F1C /* RNSentry.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNSentry;
-		};
 		03B782CD210050C400FA581D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE29E064CE7349B2A0AEF286 /* OAuthManager.xcodeproj */;
@@ -137,6 +131,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
 			remoteInfo = "RCTPushNotification-tvOS";
+		};
+		03E9801721194F200011F127 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03E9801121194F200011F127 /* RNSentry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSentry;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -384,8 +385,8 @@
 		0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		03835BBB210043BC002FFCB4 /* GithubPushNotificationsMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GithubPushNotificationsMobile.entitlements; path = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements; sourceTree = "<group>"; };
-		03A4058121193BB100258F1C /* RNSentry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		03E9801121194F200011F127 /* RNSentry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* GithubPushNotificationsMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubPushNotificationsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,6 +425,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E9801921194F290011F127 /* libRNSentry.a in Frameworks */,
 				0304D04D2105401B00A5470D /* libRNDeviceInfo.a in Frameworks */,
 				03C9C5372103E39100F6D3B7 /* libRCTPushNotification.a in Frameworks */,
 				0309E6262100EFBB0048E15D /* libReactNativeConfig.a in Frameworks */,
@@ -556,14 +558,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		03A4058221193BB100258F1C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03A405B321193BB100258F1C /* libRNSentry.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		03B782CA210050C400FA581D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +571,14 @@
 			children = (
 				03C9C51A2103E38700F6D3B7 /* libRCTPushNotification.a */,
 				03C9C51C2103E38700F6D3B7 /* libRCTPushNotification-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03E9801221194F200011F127 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03E9801821194F200011F127 /* libRNSentry.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -679,7 +681,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				03A4058121193BB100258F1C /* RNSentry.xcodeproj */,
+				03E9801121194F200011F127 /* RNSentry.xcodeproj */,
 				0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */,
 				03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */,
 				0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */,
@@ -940,8 +942,8 @@
 					ProjectRef = 0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */;
 				},
 				{
-					ProductGroup = 03A4058221193BB100258F1C /* Products */;
-					ProjectRef = 03A4058121193BB100258F1C /* RNSentry.xcodeproj */;
+					ProductGroup = 03E9801221194F200011F127 /* Products */;
+					ProjectRef = 03E9801121194F200011F127 /* RNSentry.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1011,13 +1013,6 @@
 			remoteRef = 0309E6242100EFB50048E15D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		03A405B321193BB100258F1C /* libRNSentry.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNSentry.a;
-			remoteRef = 03A405B221193BB100258F1C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		03B782CE210050C400FA581D /* libOAuthManager.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1037,6 +1032,13 @@
 			fileType = archive.ar;
 			path = "libRCTPushNotification-tvOS.a";
 			remoteRef = 03C9C51B2103E38700F6D3B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03E9801821194F200011F127 /* libRNSentry.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSentry.a;
+			remoteRef = 03E9801721194F200011F127 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
