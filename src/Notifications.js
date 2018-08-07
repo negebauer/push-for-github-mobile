@@ -69,6 +69,7 @@ export default class Notifications extends React.Component {
       systemVersion: DeviceInfo.getSystemVersion(),
       timezone: DeviceInfo.getTimezone(),
       uid: DeviceInfo.getUniqueID(),
+      version: DeviceInfo.getVersion(),
     }
     try {
       await registerDevice(deviceData, accessToken)
