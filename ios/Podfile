@@ -7,7 +7,9 @@ target 'GithubPushNotificationsMobile' do
 
   # Pods for GithubPushNotificationsMobile
   pod 'DCTAuth', git: 'https://github.com/danielctull/DCTAuth.git'
-  # pod 'react-native-config', :path => '../node_modules/react-native-config'
-  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
+  # Avoid this to avoid React 0.11.0 pod
+  # pod 'react-native-config', :path => '../node_modules/react-native-config'
+  # pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+  # pod 'SentryReactNative', path: '../node_modules/react-native-sentry'
 end

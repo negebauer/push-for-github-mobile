@@ -43,6 +43,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D0A02E5CF74945E5A2B4640C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1145B5FDB645F39F3FCC60 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
+		};
+		03A405B221193BB100258F1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03A4058121193BB100258F1C /* RNSentry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSentry;
 		};
 		03B782CD210050C400FA581D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -376,6 +384,7 @@
 		0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		03835BBB210043BC002FFCB4 /* GithubPushNotificationsMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GithubPushNotificationsMobile.entitlements; path = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements; sourceTree = "<group>"; };
+		03A4058121193BB100258F1C /* RNSentry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -392,6 +401,7 @@
 		2D02E47B1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1145B5FDB645F39F3FCC60 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -432,6 +442,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				24838764DCD97F6372234B6F /* libPods-GithubPushNotificationsMobile.a in Frameworks */,
 				48089E56D1E240C9B06A2ECE /* libOAuthManager.a in Frameworks */,
+				D0A02E5CF74945E5A2B4640C /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +556,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		03A4058221193BB100258F1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03A405B321193BB100258F1C /* libRNSentry.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		03B782CA210050C400FA581D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +644,7 @@
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				E6A6D9E385F5B9C8FFC9ADC7 /* libPods-GithubPushNotificationsMobile.a */,
+				5C1145B5FDB645F39F3FCC60 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -659,6 +679,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				03A4058121193BB100258F1C /* RNSentry.xcodeproj */,
 				0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */,
 				03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */,
 				0309E5FA2100EFB50048E15D /* ReactNativeConfig.xcodeproj */,
@@ -756,6 +777,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C03B1B829BB750138EB52612 /* [CP] Embed Pods Frameworks */,
 				301169048568A652917D6210 /* [CP] Copy Pods Resources */,
+				4CA9EC3FF3434C2C98A3DD88 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -917,6 +939,10 @@
 					ProductGroup = 0304D01C2105401200A5470D /* Products */;
 					ProjectRef = 0304D01B2105401200A5470D /* RNDeviceInfo.xcodeproj */;
 				},
+				{
+					ProductGroup = 03A4058221193BB100258F1C /* Products */;
+					ProjectRef = 03A4058121193BB100258F1C /* RNSentry.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -983,6 +1009,13 @@
 			fileType = archive.ar;
 			path = libReactNativeConfig.a;
 			remoteRef = 0309E6242100EFB50048E15D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03A405B321193BB100258F1C /* libRNSentry.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSentry.a;
+			remoteRef = 03A405B221193BB100258F1C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		03B782CE210050C400FA581D /* libOAuthManager.a */ = {
@@ -1279,7 +1312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
 		0ED1E3B8D0517B28278117A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1311,7 +1344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
 		301169048568A652917D6210 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1327,6 +1360,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4CA9EC3FF3434C2C98A3DD88 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../node_modules/@sentry/cli/bin/sentry-cli upload-dsym";
 		};
 		C03B1B829BB750138EB52612 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
