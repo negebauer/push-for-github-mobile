@@ -256,17 +256,15 @@ workflows:
       - beta-android:
           requires:
             - android
-          # TODO: RE ENABLE THIS FILTER
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       - beta-ios:
           requires:
             - ios
-          # TODO: RE ENABLE THIS FILTER
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       # - deploy-android:
       #     requires:
       #       - android
