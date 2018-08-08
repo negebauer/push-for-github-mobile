@@ -1,5 +1,10 @@
 # Github push notifications for mobile
 
+
+<div style="display:flex;justify-content:center;">
+<img src="https://github.com/negebauer/github-push-notifications-mobile/raw/master/assets/icon.jpg" style="width:160px;height:160px;border-radius:80px" />
+</div>
+
 [![circleciB]][circleciL]
 
 Obtain github notifications as push notifications in your phone
