@@ -8,7 +8,7 @@ skip_docs
 
 def version_code
   commit_count = sh('git rev-list --count master')
-  Integer(commit_count) + 30
+  Integer(commit_count) + 31
 end
 
 platform :android do
