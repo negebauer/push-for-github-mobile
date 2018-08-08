@@ -1,9 +1,15 @@
 # Github push notifications for mobile
 
-
-<div style="display:flex;justify-content:center;">
-<img src="https://github.com/negebauer/github-push-notifications-mobile/raw/master/assets/icon.jpg" style="width:160px;height:160px;border-radius:80px" />
-</div>
+<p align="center">
+  <a href="https://github.com/negebauer/github-push-notifications-mobile">
+    <img
+      alt="Node.js"
+      src="https://github.com/negebauer/github-push-notifications-mobile/raw/master/assets/icon.jpg"
+      width="160"
+      style="border-radius:80px"
+    />
+  </a>
+</p>
 
 [![circleciB]][circleciL]
 
