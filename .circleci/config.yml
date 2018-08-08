@@ -117,15 +117,15 @@ jobs:
       - run: pod install
       - run: bundle exec fastlane build_ci
       - store_artifacts:
-          path: github-push-notifications-mobile.ipa
-          destination: ./github-push-notifications-mobile.ipa
+          path: GithubPushNotificationsMobile.ipa
+          destination: ./GithubPushNotificationsMobile.ipa
       - store_artifacts:
-          path: github-push-notifications-mobile.app.dSYM.zip
-          destination: ./github-push-notifications-mobile.app.dSYM.zip
+          path: GithubPushNotificationsMobile.app.dSYM.zip
+          destination: ./GithubPushNotificationsMobile.app.dSYM.zip
       - persist_to_workspace:
           root: ~/github-push-notifications-mobile/ios
           paths:
-            - github-push-notifications-mobile.ipa
+            - GithubPushNotificationsMobile.ipa
 
   beta-android:
     working_directory: ~/github-push-notifications-mobile/android
