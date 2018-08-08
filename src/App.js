@@ -96,16 +96,17 @@ export default class App extends React.Component {
   )
 
   handleUrl = url => Alert.alert(
-    'Open notification url',
-    url,
+    'Notification',
+    `Open notification url\n${url}`,
     [
       { text: 'Cancel', onPress: () => {}, style: 'cancel' },
-      { text: 'Open', onPress: () => this.openURL(url) },
+      {
+        text: 'Open',
+        onPress: () => Linking.canOpenURL(url).then(canOpen => canOpen && Linking.openURL(url))
+      },
     ],
     { cancelable: false }
   )
-
-  openUrl = url => Linking.canOpenURL(url).then(isSupported => Linking.openURL(url))
 
   render() {
     const { loading, token, username, avatarUrl, loginError, notificationsError } = this.state
