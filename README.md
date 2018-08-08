@@ -6,7 +6,6 @@
       alt="Node.js"
       src="https://github.com/negebauer/github-push-notifications-mobile/raw/master/assets/icon.jpg"
       width="160"
-      style="border-radius:80px"
     />
   </a>
 </p>
