@@ -66,6 +66,8 @@ jobs:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
+      - run: echo "API_URL=$ENV_API_URL" > ../.env
+      - run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" > ../.env
       - run: bundle exec fastlane build_ci
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release.apk
@@ -109,6 +111,8 @@ jobs:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
+      - run: echo "API_URL=$ENV_API_URL" > ../.env
+      - run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" > ../.env
       - run: bundle exec fastlane build_ci
       - store_artifacts:
           path: github-push-notifications-mobile.ipa
