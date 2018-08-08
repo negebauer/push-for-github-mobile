@@ -80,7 +80,7 @@ jobs:
   ios:
     working_directory: ~/github-push-notifications-mobile/ios
     macos:
-      xcode: "9.2"
+      xcode: "9.0"
     # use a --login shell so our "set Ruby version" command gets picked up for later steps
     shell: /bin/bash --login -o pipefail
     steps:
@@ -159,7 +159,7 @@ jobs:
   beta-ios:
     working_directory: ~/github-push-notifications-mobile/ios
     macos:
-      xcode: "9.2"
+      xcode: "9.0"
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout:
@@ -204,7 +204,7 @@ jobs:
   # deploy-ios:
   #   working_directory: ~/github-push-notifications-mobile/ios
   #   macos:
-  #     xcode: "9.2"
+  #     xcode: "9.0"
   #   steps:
   #     - checkout:
   #        path: ~/github-push-notifications-mobile
