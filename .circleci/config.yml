@@ -80,7 +80,7 @@ jobs:
   ios:
     working_directory: ~/github-push-notifications-mobile/ios
     macos:
-      xcode: "9.0"
+      xcode: "9.2"
     # use a --login shell so our "set Ruby version" command gets picked up for later steps
     shell: /bin/bash --login -o pipefail
     steps:
@@ -113,7 +113,7 @@ jobs:
             - vendor/bundle
       - run: echo "API_URL=$ENV_API_URL" >> ../.env
       - run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" >> ../.env
-      - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      # - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run: pod install
       - run: bundle exec fastlane build_ci
       - store_artifacts:
@@ -153,7 +153,7 @@ jobs:
   beta-ios:
     working_directory: ~/github-push-notifications-mobile/ios
     macos:
-      xcode: "9.0"
+      xcode: "9.2"
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout:
@@ -198,7 +198,7 @@ jobs:
   # deploy-ios:
   #   working_directory: ~/github-push-notifications-mobile/ios
   #   macos:
-  #     xcode: "9.0"
+  #     xcode: "9.2"
   #   steps:
   #     - checkout:
   #        path: ~/github-push-notifications-mobile
