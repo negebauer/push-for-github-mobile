@@ -60,10 +60,10 @@ jobs:
       - attach_workspace:
           at: ~/github-push-notifications-mobile
       - restore_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run: bundle install --path vendor/bundle
       - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
       - run: echo "API_URL=$ENV_API_URL" >> ../.env
@@ -105,23 +105,26 @@ jobs:
           paths:
             - ../node_modules
       - restore_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run: bundle install --path vendor/bundle
       - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
       - run: echo "API_URL=$ENV_API_URL" >> ../.env
       - run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" >> ../.env
       # - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - restore_cache:
-          key: pods-v1-{{ checksum "Podfile.lock" }}-{{ arch }}
+          key: pods-v2-{{ checksum "Podfile.lock" }}-{{ arch }}
       - run: pod install
+      - run: bundle exec fastlane build_ci
       - save_cache:
-          key: pods-v1-{{ checksum "Podfile.lock" }}-{{ arch }}
+          key: pods-v2-{{ checksum "Podfile.lock" }}-{{ arch }}
           paths:
             - ./Pods
-      - run: bundle exec fastlane build_ci
+            - ~/.cocoapods
+            - GithubPushNotificationsMobile.xcworkspace
+            - build
       - store_artifacts:
           path: GithubPushNotificationsMobile.ipa
           destination: ./GithubPushNotificationsMobile.ipa
@@ -148,10 +151,10 @@ jobs:
           name: Download android fastlane json
           command: curl -L -o fastlane/fastlane-github-push-notifications-mobile.json $ANDROID_FASTLANE_JSON_URI
       - restore_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run: bundle install --path vendor/bundle
       - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
       - run: bundle exec fastlane beta_ci
@@ -172,10 +175,10 @@ jobs:
           name: set Ruby version
           command:  echo "ruby-2.4" > ~/.ruby-version
       - restore_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run: bundle install --path vendor/bundle
       - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - vendor/bundle
       - run: bundle exec fastlane beta_ci
@@ -193,10 +196,10 @@ jobs:
   #         name: Download android fastlane json
   #         command: curl -L -o fastlane/fastlane-github-push-notifications-mobile.json $ANDROID_FASTLANE_JSON_URI
   #     - restore_cache:
-  #         key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+  #         key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
   #     - run: bundle install --path vendor/bundle
   #     - save_cache:
-  #         key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+  #         key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
   #         paths:
   #           - vendor/bundle
   #     - run: bundle exec fastlane deploy_ci
@@ -214,10 +217,10 @@ jobs:
   #     - attach_workspace:
   #         at: ~/github-push-notifications-mobile/ios
   #     - restore_cache:
-  #         key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+  #         key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
   #     - run: bundle install --path vendor/bundle
   #     - save_cache:
-  #         key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+  #         key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
   #         paths:
   #           - vendor/bundle
   #     - run: bundle exec fastlane deploy_ci
