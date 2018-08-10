@@ -115,7 +115,7 @@ jobs:
       - run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" >> ../.env
       - restore_cache:
           key: pods-v2-{{ checksum "Podfile" }}
-      - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      # - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run: pod install
       - run: bundle exec fastlane build_ci
       - save_cache:
