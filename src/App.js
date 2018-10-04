@@ -38,9 +38,8 @@ async function apiLogin(token) {
 async function getNotifications(token) {
   console.log('getNotifications')
   const response = await fetch(`https://api.github.com/notifications?access_token=${token}`)
-  console.log('response', response)
   const notifications = await response.json()
-  console.log('notifications', notifications)
+  return notifications
 }
 
 export default class App extends React.Component {
@@ -55,6 +54,7 @@ export default class App extends React.Component {
       loginError: undefined,
       // notificationsError: new Error('asd'),
       notificationsError: undefined,
+      notifications: [],
     }
   }
 
@@ -89,7 +89,8 @@ export default class App extends React.Component {
       Sentry.captureException(error)
     }
     this.setState({ loading: false })
-    getNotifications(token)
+    const notifications = await getNotifications(token)
+    this.setState({ notifications })
   }
 
   logout = () => this.manager.deauthorize(OAUTH_PROVIDER)
@@ -118,6 +119,8 @@ export default class App extends React.Component {
   )
 
   render() {
+    console.log('notifications')
+    console.log(this.state.notifications)
     const { loading, token, username, avatarUrl, loginError, notificationsError } = this.state
     if (loading) return <LoadingView text="Loading account" />
     if (!loading && !token) {
@@ -158,6 +161,11 @@ export default class App extends React.Component {
               </>
             }
             <Text style={styles.data}>{`Github Push v${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`}</Text>
+            <View>
+              {this.state.notifications.map(({ subject: { title, type } }) => (
+                <Text style={styles.data} key={title}>{`${type}: ${title}`}</Text>
+              ))}
+            </View>
           </View>
         </View>
       </Notifications>
