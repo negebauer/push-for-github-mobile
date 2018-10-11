@@ -254,8 +254,7 @@ develop-filters: &develop-filters
       only:
         - /f\/.*/
         - master
-    tags:
-      <<: *any-tag
+    <<: *any-tag
 
 deploy-filters: &deploy-filters
   filters:
@@ -297,9 +296,7 @@ workflows:
           <<: *master-branch-filter
     jobs:
       - yarn:
-          filters:
-            branches:
-              only: master
+          <<: *master-branch-filter
       - build-android:
           <<: *requires-yarn
           <<: *master-branch-filter
