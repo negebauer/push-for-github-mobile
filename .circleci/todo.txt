@@ -1,0 +1,74 @@
+Docs job
+
+  docs:
+    working_directory: ~/push-for-github-mobile
+    docker:
+      - image: circleci/node:9.2
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/push-for-github-mobile
+      - run: ./node_modules/.bin/esdoc
+      - run: mv docs ..
+      - run: cp README.md ../docs
+      - run: git checkout gh-pages
+      - run: rm -rf ./*
+      - run: mv ../docs/* ./
+      - run: git config user.email "negebauerm@gmail.com"
+      - run: git config user.name "negebauer"
+      - run: git commit -am "docs"
+      - run: git push
+
+
+Docs workflow job
+  - docs:
+    requires:
+      - node
+    filters:
+      tags:
+        only: /.*/
+      branches:
+        only: master
+
+Deploy
+
+  deploy-android:
+    working_directory: ~/push-for-github-mobile/android
+    docker:
+      - image: circleci/ruby:2.5-node
+    steps:
+      - checkout:
+         path: ~/push-for-github-mobile
+      - attach_workspace:
+          at: ~/push-for-github-mobile/android
+      - run:
+          name: Download android fastlane json
+          command: curl -L -o fastlane/fastlane-push-for-github-mobile.json $ANDROID_FASTLANE_JSON_URI
+      - restore_cache:
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          paths:
+            - vendor/bundle
+      - run: bundle exec fastlane deploy_ci
+  deploy-ios:
+    working_directory: ~/push-for-github-mobile/ios
+    macos:
+      xcode: "9.0"
+    steps:
+      - checkout:
+         path: ~/push-for-github-mobile
+      - run:
+          name: set Ruby version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      - attach_workspace:
+          at: ~/push-for-github-mobile/ios
+      - restore_cache:
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          paths:
+            - vendor/bundle
+      - run: bundle exec fastlane deploy_ci
