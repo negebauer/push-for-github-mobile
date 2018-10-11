@@ -99,7 +99,7 @@ export default class App extends React.Component {
     'Notification',
     `Open notification url\n${url}`,
     [
-      { text: 'Cancel', onPress: () => {}, style: 'cancel' },
+      { text: 'Cancel', onPress: () => { }, style: 'cancel' },
       {
         text: 'Open',
         onPress: () => Linking.canOpenURL(url).then(canOpen => canOpen && Linking.openURL(url))
@@ -110,7 +110,7 @@ export default class App extends React.Component {
 
   render() {
     const { loading, token, username, avatarUrl, loginError, notificationsError } = this.state
-    if (loading) return <LoadingView text="Loading account"/>
+    if (loading) return <LoadingView text="Loading account" />
     if (!loading && !token) {
       return (
         <View style={styles.loginBackground}>
@@ -137,7 +137,7 @@ export default class App extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.container}>
-            <Image style={styles.avatar} source={{ uri: avatarUrl }}/>
+            <Image style={styles.avatar} source={{ uri: avatarUrl }} />
             <Text style={styles.username}>{username}</Text>
             {!notificationsError && <Text style={styles.subtitle}>Notifications active</Text>}
             {notificationsError &&
