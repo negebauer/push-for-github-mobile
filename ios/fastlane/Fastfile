@@ -37,6 +37,7 @@ platform :ios do
   end
 
   lane :beta_ci do
+    next unless version_code > latest_testflight_build_number
     changelog = changelog_from_git_commits
     upload_to_testflight changelog: changelog
   end
