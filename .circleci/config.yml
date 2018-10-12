@@ -147,7 +147,7 @@ jobs:
       - *checkout-mobile
       - run:
           name: Download android keystore
-          command: curl -L -o app/github-push-notifications-mobile.keystore $ANDROID_KEYSTORE_URI
+          command: curl -L -o app/push-for-github-mobile.keystore $ANDROID_KEYSTORE_URI
       - run:
           name: Download android google services
           command: curl -L -o app/google-services.json $ANDROID_GOOGLE_SERVICES_URI
@@ -292,7 +292,7 @@ workflows:
   daily-beta:
     triggers:
       - schedule:
-          cron: '0 14 * * *'
+          cron: '15 14 * * *'
           <<: *master-branch-filter
     jobs:
       - yarn:
