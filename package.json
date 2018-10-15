@@ -1,6 +1,6 @@
 {
   "name": "GithubPushNotificationsMobile",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -8,7 +8,9 @@
     "android": "react-native run-android",
     "simulators": "yarn ios & yarn android",
     "test": "jest",
-    "icon": "app-icon generate --icon assets/icon.jpg"
+    "icon": "app-icon generate --icon assets/icon.jpg",
+    "release": "standard-version -a -m \"chore(release): %s\n\n[skip ci]\"",
+    "postrelease": "git push --follow-tags"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
@@ -25,9 +27,16 @@
     "babel-jest": "23.4.0",
     "babel-preset-react-native": "^5",
     "jest": "23.4.1",
-    "react-test-renderer": "16.4.1"
+    "react-native-version": "^2.6.5",
+    "react-test-renderer": "16.4.1",
+    "standard-version": "^4.4.0"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "react-native-version -s $(($(git rev-list --count master) + 85)) && git add android ios"
+    }
   }
 }
