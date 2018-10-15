@@ -10,6 +10,7 @@ node-cache-key-mac: &node-cache-key-mac node-v7-mac-{{ checksum "../package.json
 yarn-cache-key: &yarn-cache-key yarn-v7-{{ checksum "yarn.lock" }}
 yarn-cache-key-mac: &yarn-cache-key-mac yarn-v7-mac-{{ checksum "../yarn.lock" }}
 gemfile-cache-key: &gemfile-cache-key bundle-v7-{{ checksum "Gemfile.lock" }}
+gemfile-cache-key-mac: &gemfile-cache-key-mac bundle-v7-mac-{{ checksum "Gemfile.lock" }}
 
 ### Configs ###
 
@@ -79,17 +80,21 @@ restore-node-cache: &restore-node-cache
   restore_cache:
     key: *node-cache-key
 
-restore-yarn-cache-mobile: &restore-yarn-cache-mobile
+restore-yarn-cache-mac: &restore-yarn-cache-mac
   restore_cache:
     key: *yarn-cache-key-mac
 
-restore-node-cache-mobile: &restore-node-cache-mobile
+restore-node-cache-mac: &restore-node-cache-mac
   restore_cache:
     key: *node-cache-key-mac
 
 restore-gemfile-cache: &restore-gemfile-cache
   restore_cache:
     key: *gemfile-cache-key
+
+restore-gemfile-cache-mac: &restore-gemfile-cache-mac
+  restore_cache:
+    key: *gemfile-cache-key-mac
 
 yarn-install: &yarn-install
   run: yarn
@@ -103,7 +108,7 @@ save-node-cache: &save-node-cache
     paths:
       - node_modules
 
-save-node-cache-mobile: &save-node-cache-mobile
+save-node-cache-mac: &save-node-cache-mac
   save_cache:
     key: *node-cache-key-mac
     paths:
@@ -115,7 +120,7 @@ save-yarn-cache: &save-yarn-cache
     paths:
       - ~/.cache/yarn
 
-save-yarn-cache-mobile: &save-yarn-cache-mobile
+save-yarn-cache-mac: &save-yarn-cache-mac
   save_cache:
     key: *yarn-cache-key-mac
     paths:
@@ -124,6 +129,12 @@ save-yarn-cache-mobile: &save-yarn-cache-mobile
 save-gemfile-cache: &save-gemfile-cache
   save_cache:
     key: *gemfile-cache-key
+    paths:
+      - vendor/bundle
+
+save-gemfile-cache-mac: &save-gemfile-cache-mac
+  save_cache:
+    key: *gemfile-cache-key-mac
     paths:
       - vendor/bundle
 
@@ -176,16 +187,16 @@ jobs:
     steps:
       - *checkout-mobile
       - *set-ios-ruby-version
-      - *restore-yarn-cache-mobile
-      - *restore-node-cache-mobile
+      - *restore-yarn-cache-mac
+      - *restore-node-cache-mac
       # not using a workspace here as Node and Yarn versions differ
       # between our macOS executor image and the Docker containers above
       - *yarn-install
-      - *save-yarn-cache-mobile
-      - *save-node-cache-mobile
-      - *restore-gemfile-cache
+      - *save-yarn-cache-mac
+      - *save-node-cache-mac
+      - *restore-gemfile-cache-mac
       - *bundle-install
-      - *save-gemfile-cache
+      - *save-gemfile-cache-mac
       - *set-env-api-url
       - *set-env-gcm-send-id
       - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
@@ -223,9 +234,9 @@ jobs:
       - *attach-mobile
       - *attach-ios
       - *set-ios-ruby-version
-      - *restore-gemfile-cache
+      - *restore-gemfile-cache-mac
       - *bundle-install
-      - *save-gemfile-cache
+      - *save-gemfile-cache-mac
       - *fastlane-beta-ci
 
   deploy-android:
