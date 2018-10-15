@@ -221,7 +221,11 @@ jobs:
       - *save-gemfile-cache-mac
       - *set-env-api-url
       - *set-env-gcm-send-id
-      - run: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - *restore-cocoapods-cache
+      - run:
+          name: Download cocoapods
+          command: if [[ ! -e ~/.cocoapods ]]; then curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf; fi
+      - *save-cocoapods-cache
       - run: pod install
       - *fastlane-build-ci
       - store_artifacts:
