@@ -6,9 +6,9 @@ project-folder: &project-folder ~/push-for-github-mobile
 android-folder: &android-folder ~/push-for-github-mobile/android
 ios-folder: &ios-folder ~/push-for-github-mobile/ios
 node-cache-key: &node-cache-key node-v7-{{ checksum "package.json" }}
-node-cache-key-mobile: &node-cache-key-mobile node-v7-{{ checksum "../package.json" }}
+node-cache-key-mac: &node-cache-key-mac node-v7-mac-{{ checksum "../package.json" }}
 yarn-cache-key: &yarn-cache-key yarn-v7-{{ checksum "yarn.lock" }}
-yarn-cache-key-mobile: &yarn-cache-key-mobile yarn-v7-{{ checksum "../yarn.lock" }}
+yarn-cache-key-mac: &yarn-cache-key-mac yarn-v7-mac-{{ checksum "../yarn.lock" }}
 gemfile-cache-key: &gemfile-cache-key bundle-v7-{{ checksum "Gemfile.lock" }}
 
 ### Configs ###
@@ -81,11 +81,11 @@ restore-node-cache: &restore-node-cache
 
 restore-yarn-cache-mobile: &restore-yarn-cache-mobile
   restore_cache:
-    key: *yarn-cache-key-mobile
+    key: *yarn-cache-key-mac
 
 restore-node-cache-mobile: &restore-node-cache-mobile
   restore_cache:
-    key: *node-cache-key-mobile
+    key: *node-cache-key-mac
 
 restore-gemfile-cache: &restore-gemfile-cache
   restore_cache:
@@ -105,7 +105,7 @@ save-node-cache: &save-node-cache
 
 save-node-cache-mobile: &save-node-cache-mobile
   save_cache:
-    key: *node-cache-key-mobile
+    key: *node-cache-key-mac
     paths:
       - node_modules
 
@@ -117,7 +117,7 @@ save-yarn-cache: &save-yarn-cache
 
 save-yarn-cache-mobile: &save-yarn-cache-mobile
   save_cache:
-    key: *yarn-cache-key-mobile
+    key: *yarn-cache-key-mac
     paths:
       - ~/.cache/yarn
 
