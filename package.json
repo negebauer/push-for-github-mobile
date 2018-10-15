@@ -8,7 +8,9 @@
     "android": "react-native run-android",
     "simulators": "yarn ios & yarn android",
     "test": "jest",
-    "icon": "app-icon generate --icon assets/icon.jpg"
+    "icon": "app-icon generate --icon assets/icon.jpg",
+    "release": "standard-version -a -m \"chore(release): %s\n\n[skip ci]\"",
+    "postrelease": "git push --follow-tags"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
@@ -31,5 +33,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "react-native-version -s $(($(git rev-list --count master) + 85)) && git add android ios"
+    }
   }
 }
