@@ -227,7 +227,9 @@ jobs:
           command: if [[ ! -e ~/.cocoapods/repos ]]; then curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf; fi
       - *save-cocoapods-cache
       - run: pod install
+      - *restore-xcode-cache
       - *fastlane-build-ci
+      - *save-xcode-cache
       - store_artifacts:
           path: GithubPushNotificationsMobile.ipa
           destination: ./GithubPushNotificationsMobile.ipa
