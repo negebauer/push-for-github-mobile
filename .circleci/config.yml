@@ -12,7 +12,7 @@ yarn-cache-key-mac: &yarn-cache-key-mac yarn-v8-mac-{{ checksum "../yarn.lock" }
 gemfile-cache-key: &gemfile-cache-key bundle-v8-{{ checksum "Gemfile.lock" }}
 gemfile-cache-key-mac: &gemfile-cache-key-mac bundle-v8-mac-{{ checksum "Gemfile.lock" }}
 xcode-cache-key: &xcode-cache-key xcode-v8
-cocapods-cache-key: &cocoapods-cache-key cocoapods-v8
+cocapods-cache-key: &cocoapods-cache-key cocoapods-v9
 
 ### Configs ###
 
@@ -158,7 +158,7 @@ save-cocoapods-cache: &save-cocoapods-cache
   save_cache:
     key: *cocoapods-cache-key
     paths:
-      - ~/.cocoapods
+      - ~/.cocoapods/repos
 
 ### Jobs ###
 
@@ -224,7 +224,7 @@ jobs:
       - *restore-cocoapods-cache
       - run:
           name: Download cocoapods
-          command: if [[ ! -e ~/.cocoapods ]]; then curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf; fi
+          command: if [[ ! -e ~/.cocoapods/repos ]]; then curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf; fi
       - *save-cocoapods-cache
       - run: pod install
       - *fastlane-build-ci
