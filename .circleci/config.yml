@@ -11,6 +11,7 @@ yarn-cache-key: &yarn-cache-key yarn-v8-{{ checksum "yarn.lock" }}
 yarn-cache-key-mac: &yarn-cache-key-mac yarn-v8-mac-{{ checksum "../yarn.lock" }}
 gemfile-cache-key: &gemfile-cache-key bundle-v8-{{ checksum "Gemfile.lock" }}
 gemfile-cache-key-mac: &gemfile-cache-key-mac bundle-v8-mac-{{ checksum "Gemfile.lock" }}
+xcode-cache-key: &xcode-cache-key xcode-v8
 
 ### Configs ###
 
@@ -96,6 +97,10 @@ restore-gemfile-cache-mac: &restore-gemfile-cache-mac
   restore_cache:
     key: *gemfile-cache-key-mac
 
+restore-xcode-cache: &restore-xcode-cache
+  restore_cache:
+    key: *xcode-cache-key
+
 yarn-install: &yarn-install
   run: yarn
 
@@ -124,7 +129,7 @@ save-yarn-cache-mac: &save-yarn-cache-mac
   save_cache:
     key: *yarn-cache-key-mac
     paths:
-      - /Users/distiller/Library/Caches/Yarn
+      - ~/Library/Caches/Yarn
 
 save-gemfile-cache: &save-gemfile-cache
   save_cache:
@@ -137,6 +142,12 @@ save-gemfile-cache-mac: &save-gemfile-cache-mac
     key: *gemfile-cache-key-mac
     paths:
       - vendor/bundle
+
+save-xcode-cache: &save-xcode-cache
+  save_cache:
+    key: *xcode-cache-key
+    paths:
+      - ~/Library/Developer/Xcode/DerivedData
 
 ### Jobs ###
 
