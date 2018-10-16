@@ -31,4 +31,4 @@ But you can [join the beta with Testflight](https://testflight.apple.com/join/eQ
 <!-- Badges -->
 
 [circleciL]:https://circleci.com/gh/negebauer/github-push-notifications-mobile
-[circleciB]:https://circleci.com/gh/negebauer/github-push-notifications-mobile.svg?style=svg
+[circleciB]:https://circleci.com/gh/negebauer/push-for-github-mobile.svg?style=svg
