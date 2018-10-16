@@ -36,7 +36,8 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "react-native-version -s $(($(git rev-list --count master) + 85)) && git add android ios"
+      "postbump": "react-native-version -s $(($(git rev-list --count master) + 85)) && git add android ios",
+      "posttag": "tag=$(git describe --tags); git tag -d $tag; git tag -a $tag -m $tag"
     }
   }
 }
