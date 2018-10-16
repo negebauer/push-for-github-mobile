@@ -99,6 +99,14 @@ def spaceship_notify_external_testers(build_id)
   spaceship_request(:post, url, body)
 end
 
+def changelog
+  changelog_from_git_commits
+    .split("\n")
+    .select { |string|
+      string.index('feat:') || string.index('fix:') || string.index('feat(') || string.index('fix(')
+    }.join("\n")
+end
+
 platform :ios do
   before_all do
     setup_circle_ci
