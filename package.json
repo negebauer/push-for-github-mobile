@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint --ext js,jsx .",
+    "lint:fix": "eslint --fix --ext js,jsx .",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "simulators": "yarn ios & yarn android",
