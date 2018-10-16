@@ -77,13 +77,13 @@ restore-yarn-cache: &restore-yarn-cache
   restore_cache:
     key: *yarn-cache-key
 
-restore-node-cache: &restore-node-cache
-  restore_cache:
-    key: *node-cache-key
-
 restore-yarn-cache-mac: &restore-yarn-cache-mac
   restore_cache:
     key: *yarn-cache-key-mac
+
+restore-node-cache: &restore-node-cache
+  restore_cache:
+    key: *node-cache-key
 
 restore-node-cache-mac: &restore-node-cache-mac
   restore_cache:
@@ -107,18 +107,6 @@ yarn-install: &yarn-install
 bundle-install: &bundle-install
   run: bundle install --path vendor/bundle
 
-save-node-cache: &save-node-cache
-  save_cache:
-    key: *node-cache-key
-    paths:
-      - node_modules
-
-save-node-cache-mac: &save-node-cache-mac
-  save_cache:
-    key: *node-cache-key-mac
-    paths:
-      - ../node_modules
-
 save-yarn-cache: &save-yarn-cache
   save_cache:
     key: *yarn-cache-key
@@ -130,6 +118,18 @@ save-yarn-cache-mac: &save-yarn-cache-mac
     key: *yarn-cache-key-mac
     paths:
       - ~/Library/Caches/Yarn
+
+save-node-cache: &save-node-cache
+  save_cache:
+    key: *node-cache-key
+    paths:
+      - node_modules
+
+save-node-cache-mac: &save-node-cache-mac
+  save_cache:
+    key: *node-cache-key-mac
+    paths:
+      - ../node_modules
 
 save-gemfile-cache: &save-gemfile-cache
   save_cache:
