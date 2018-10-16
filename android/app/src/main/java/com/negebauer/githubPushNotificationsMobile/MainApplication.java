@@ -1,4 +1,4 @@
-package com.pushforgithub;
+package com.negebauer.GithubPushNotificationsMobile;
 
 import android.app.Application;
 

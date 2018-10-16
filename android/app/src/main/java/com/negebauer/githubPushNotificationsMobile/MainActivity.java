@@ -1,4 +1,4 @@
-package com.pushforgithub;
+package com.negebauer.GithubPushNotificationsMobile;
 
 import com.facebook.react.ReactActivity;
 
