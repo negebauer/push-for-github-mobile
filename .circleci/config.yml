@@ -30,7 +30,7 @@ ios-config: &ios-config
   # use a --login shell so our "set Rufvby version" command gets picked up for later steps
   shell: /bin/bash --login -o pipefail
   macos:
-    xcode: '10.0.0'
+    xcode: '9.4.1'
 
 ### Workspace ###
 
