@@ -18,7 +18,7 @@ cocapods-cache-key: &cocoapods-cache-key cocoapods-v9-{{ checksum "Podfile.lock"
 node-config: &node-config
   working_directory: *project-folder
   docker:
-    - image: circleci/node:9.2
+    - image: circleci/node:10.8
 
 android-config: &android-config
   working_directory: *android-folder
