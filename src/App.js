@@ -148,7 +148,7 @@ export default class App extends React.Component {
                 </TouchableOpacity>
               </>
             }
-            <Text style={styles.data}>{`GithubPushNotificationsMobile v${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`}</Text>
+            <Text style={styles.data}>{`${DeviceInfo.getApplicationName()} v${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`}</Text>
           </View>
         </View>
       </Notifications>
