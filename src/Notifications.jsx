@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, PushNotificationIOS, Platform } from 'react-native'
+import {
+  View, Text, PushNotificationIOS, Platform,
+} from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import DeviceInfo from 'react-native-device-info'
 import Config from 'react-native-config'
@@ -12,7 +14,7 @@ async function registerDevice(data, token) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `token ${token}`
+      Authorization: `token ${token}`,
     },
     body: JSON.stringify(data),
   })
@@ -26,31 +28,18 @@ export default class Notifications extends React.Component {
   constructor() {
     super()
     this.state = { loading: true, error: undefined }
+
+    this.configure = this.configure.bind(this)
+    this.onRegister = this.onRegister.bind(this)
+    this.receiveNotification = this.receiveNotification.bind(this)
   }
 
-  componentWillMount = () => {
+  componentWillMount() {
     this.configure()
     if (Platform.OS === 'ios') PushNotification.setApplicationIconBadgeNumber(0)
   }
 
-  configure = () => {
-    this.setState({ loading: true })
-    if (DeviceInfo.isEmulator() && Platform.OS === 'ios') this.setState({ loading: false })
-    PushNotification.configure({
-      onRegister: this.onRegister,
-      onNotification: this.receiveNotification,
-      senderID: Config.GCM_SENDER_ID,
-      permissions: {
-        alert: true,
-        // badge: true,
-        sound: true,
-      },
-      popInitialNotification: true,
-      requestPermissions: true,
-    })
-  }
-
-  onRegister = async ({ token }) => {
+  async onRegister({ token }) {
     const { token: accessToken, onNotificationsFailed } = this.props
     const deviceData = {
       token,
@@ -71,22 +60,42 @@ export default class Notifications extends React.Component {
     this.setState({ loading: false })
   }
 
-  receiveNotification = ({ userInteraction, data, finish }) => {
+  configure() {
+    this.setState({ loading: true })
+    if (DeviceInfo.isEmulator() && Platform.OS === 'ios') this.setState({ loading: false })
+    PushNotification.configure({
+      onRegister: this.onRegister,
+      onNotification: this.receiveNotification,
+      senderID: Config.GCM_SENDER_ID,
+      permissions: {
+        alert: true,
+        // badge: true,
+        sound: true,
+      },
+      popInitialNotification: true,
+      requestPermissions: true,
+    })
+  }
+
+  receiveNotification({ userInteraction, data, finish }) {
     const { url, type } = data
-    if (url && userInteraction && type === 'NEW_NOTIFICATION') this.props.onUrl(url)
+    const { onUrl } = this.props
+    if (url && userInteraction && type === 'NEW_NOTIFICATION') onUrl(url)
     if (Platform.OS === 'ios') finish(PushNotificationIOS.FetchResult.NoData)
   }
 
   render() {
-    if (this.state.loading) return <LoadingView text="Setting up notifications" />
-    else if (this.state.error) {
+    const { loading, error } = this.state
+    const { children } = this.props
+    if (loading) return <LoadingView text="Setting up notifications" />
+    if (error) {
       return (
         <View>
-          <Text>{`error: ${this.state.error}`}</Text>
+          <Text>{`error: ${error}`}</Text>
         </View>
       )
     }
-    return this.props.children
+    return children
   }
 }
 
@@ -94,9 +103,10 @@ Notifications.propTypes = {
   token: PropTypes.string.isRequired,
   onUrl: PropTypes.func.isRequired,
   onNotificationsFailed: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 Notifications.defaulProps = {
-  onUrl: () => {},
-  onNotificationsFailed: () => {},
+  onUrl: () => { },
+  onNotificationsFailed: () => { },
 }
