@@ -105,8 +105,8 @@ android {
         applicationId "com.negebauer.GithubPushNotificationsMobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 161
+        versionName "1.0.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
