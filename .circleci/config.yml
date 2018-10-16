@@ -256,6 +256,18 @@ jobs:
     steps:
       - run: echo 'TODO'
 
+  beta-external-ios:
+    <<: *ios-config
+    steps:
+      - *checkout-mobile
+      - *attach-ios
+      - *set-ios-ruby-version
+      - *restore-gemfile-cache-mac
+      - *bundle-install
+      - *save-gemfile-cache-mac
+      - run: bundle exec fastlane external_beta_submit_ci
+
+
 ### Workflow config variables ###
 
 requires-yarn: &requires-yarn
@@ -325,19 +337,21 @@ workflows:
           cron: '15 14 * * *'
           <<: *master-branch-filter
     jobs:
-      - yarn:
-          <<: *master-branch-filter
+      - yarn
       - build-android:
           <<: *requires-yarn
-          <<: *master-branch-filter
       - build-ios:
           <<: *requires-yarn
-          <<: *master-branch-filter
       - beta-android:
           requires:
             - build-android
-          <<: *master-branch-filter
       - beta-ios:
           requires:
             - build-ios
+  weekly-beta:
+    triggers:
+      - schedule:
+          cron: '15 14 * * 1'
           <<: *master-branch-filter
+    jobs:
+      - beta-external-ios
