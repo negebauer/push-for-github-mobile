@@ -13,12 +13,90 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+require 'spaceship'
+
 default_platform(:ios)
 skip_docs
 
 def version_code
   commit_count = sh('git rev-list --count master')
-  Integer(commit_count) + 84
+  Integer(commit_count) + 130
+end
+
+def spaceship_request(method, url, body = nil)
+  response = Spaceship::client.request(method) { |req|
+    req.url(url)
+    req.body = body.to_json if body
+    req.headers['Accept'] = 'application/vnd.api+json'
+    req.headers['Content-Type'] = 'application/vnd.api+json'
+  }
+  puts "#{method} #{url} #{body}"
+  pp response.to_hash[:body]
+  return response
+end
+
+def spaceship_get_build_and_build_id
+  puts 'spaceship_login'
+  team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+  Spaceship::Tunes.login
+  Spaceship::Portal.login
+  Spaceship::Portal.client.team_id = team_id
+
+  puts 'spaceship_get_app'
+  app_identifier =  CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  app = Spaceship::Tunes::Application.find(app_identifier)
+  puts app
+  
+  puts 'spaceship_get_latest_build'
+  build = app.builds[0]
+  puts build
+  
+  puts "spaceship_get_build_id"
+  url = "https://appstoreconnect.apple.com/iris/v1/preReleaseVersions?filter%5Bapp%5D=#{app.apple_id}&filter%5Bbuilds.expired%5D=false&filter%5Bbuilds.processingState%5D=PROCESSING,VALID&filter%5Bplatform%5D=IOS&limit=1&sort=-version"
+  pre_release_version_id = spaceship_request(:get,url).body['data'][0]['id']
+  puts "pre_release_version_id: #{pre_release_version_id}"
+
+  url = "https://appstoreconnect.apple.com/iris/v1/builds?filter%5BpreReleaseVersion%5D=#{pre_release_version_id}&filter%5BprocessingState%5D=PROCESSING,VALID&limit=1&sort=-version"
+  build_id = spaceship_request(:get, url).body['data'][0]['id']
+  puts "build_id: #{build_id}"
+
+  return build, build_id
+end
+
+def spaceship_add_external_testers(build_id)
+  puts "spaceship_add_external_testers"
+  body = { data: [{
+    type: 'betaGroups',
+    id: 'c5acefa0-6650-4dcd-a694-26a56da8b356',
+  }]}
+  url = "https://appstoreconnect.apple.com/iris/v1/builds/#{build_id}/relationships/betaGroups"
+  spaceship_request(:post, url, body)
+end
+  
+def spaceship_submit_for_testflight_review(build)
+  puts "spaceship_submit_for_testflight_review"
+  build.submit_for_testflight_review!
+end
+
+def spaceship_disable_auto_notify(build)
+  puts "spaceship_disable_auto_notify"
+  if build.auto_notify_enabled
+    puts 'Saving auto_notify_enabled false'
+    build.auto_notify_enabled = false
+    build.save!
+  end
+end
+
+def spaceship_notify_external_testers(build_id)
+  puts "spaceship_notify_external_testers"
+  body = { data: {
+    type: 'buildBetaNotifications',
+    relationships: { build: { data: {
+      type: 'builds',
+      id: build_id,
+  }}}}}
+  url = "https://appstoreconnect.apple.com/iris/v1/buildBetaNotifications"
+  spaceship_request(:post, url, body)
 end
 
 platform :ios do
@@ -38,8 +116,12 @@ platform :ios do
 
   lane :beta_ci do
     next unless version_code > latest_testflight_build_number
-    changelog = changelog_from_git_commits
-    upload_to_testflight changelog: changelog
+    # changelog = changelog_from_git_commits
+    changelog = "app update"
+    upload_to_testflight(
+      notify_external_testers: false,
+      changelog: changelog,
+    )
   end
 
   lane :build_and_beta do
@@ -47,7 +129,29 @@ platform :ios do
     increment_build_number build_number: version_code
     gym
     changelog = changelog_from_git_commits
-    upload_to_testflight changelog: changelog
+    upload_to_testflight(
+      notify_external_testers: false,
+      changelog: changelog,
+    )
+  end
+
+  # build states
+  # https://github.com/fastlane/fastlane/blob/f32b007ff45e648b37b6c9c2037ac481f36b7780/spaceship/lib/spaceship/test_flight/build.rb#L89
+
+  lane :beta_submit_external_ci do
+    build, build_id = spaceship_get_build_and_build_id()
+    puts 'wont submit' unless build.ready_to_submit?
+    next unless build.ready_to_submit?
+    spaceship_submit_for_testflight_review(build)
+    spaceship_disable_auto_notify(build)
+    spaceship_add_external_testers(build_id)
+  end
+
+  lane :beta_notify_external_ci do
+    build, build_id = spaceship_get_build_and_build_id()
+    puts 'wont notify' if build.active?
+    next if build.active?
+    spaceship_notify_external_testers(build_id)
   end
 
   lane :deploy_ci do

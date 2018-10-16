@@ -27,9 +27,9 @@ android-config: &android-config
 ios-config: &ios-config
   working_directory: *ios-folder
   # use a --login shell so our "set Rufvby version" command gets picked up for later steps
-  shell: /bin/bash --login -o pipefail
   macos:
     xcode: '9.4.1'
+  shell: /bin/bash --login -eo pipefail
 
 ### Workspace ###
 
@@ -52,7 +52,7 @@ attach-ios: &attach-ios
 set-ios-ruby-version: &set-ios-ruby-version
   run:
     name: set Ruby version
-    command: echo "ruby-2.4" > ~/.ruby-version
+    command: echo "ruby-2.5.1" > ~/.ruby-version
 
 ### Env variables ###
 
@@ -256,6 +256,29 @@ jobs:
     steps:
       - run: echo 'TODO'
 
+  beta-submit-external-ios:
+    <<: *ios-config
+    steps:
+      - *checkout-mobile
+      - *attach-ios
+      - *set-ios-ruby-version
+      - *restore-gemfile-cache-mac
+      - *bundle-install
+      - *save-gemfile-cache-mac
+      - run: bundle exec fastlane beta_submit_external_ci
+
+  beta-notify-external-ios:
+    <<: *ios-config
+    steps:
+      - *checkout-mobile
+      - *attach-ios
+      - *set-ios-ruby-version
+      - *restore-gemfile-cache-mac
+      - *bundle-install
+      - *save-gemfile-cache-mac
+      - run: bundle exec fastlane beta_notify_external_ci
+
+
 ### Workflow config variables ###
 
 requires-yarn: &requires-yarn
@@ -322,22 +345,31 @@ workflows:
   daily-beta:
     triggers:
       - schedule:
-          cron: '15 14 * * *'
+          cron: '0 14 * * *'
           <<: *master-branch-filter
     jobs:
-      - yarn:
-          <<: *master-branch-filter
+      - yarn
       - build-android:
           <<: *requires-yarn
-          <<: *master-branch-filter
       - build-ios:
           <<: *requires-yarn
-          <<: *master-branch-filter
       - beta-android:
           requires:
             - build-android
-          <<: *master-branch-filter
       - beta-ios:
           requires:
             - build-ios
+  weekly-submit-external-beta:
+    triggers:
+      - schedule:
+          cron: '30 14 * * 0'
           <<: *master-branch-filter
+    jobs:
+      - beta-submit-external-ios
+  weekly-notify-external-beta:
+    triggers:
+      - schedule:
+          cron: '0 13 * * 1'
+          <<: *master-branch-filter
+    jobs:
+      - beta-notify-external-ios
