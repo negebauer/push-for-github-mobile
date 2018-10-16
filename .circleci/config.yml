@@ -18,7 +18,7 @@ cocapods-cache-key: &cocoapods-cache-key cocoapods-v9-{{ checksum "Podfile.lock"
 node-config: &node-config
   working_directory: *project-folder
   docker:
-    - image: circleci/node:9.2
+    - image: circleci/node:10.8
 
 android-config: &android-config
   working_directory: *android-folder
@@ -30,7 +30,7 @@ ios-config: &ios-config
   # use a --login shell so our "set Rufvby version" command gets picked up for later steps
   shell: /bin/bash --login -o pipefail
   macos:
-    xcode: '9.0'
+    xcode: '9.4.1'
 
 ### Workspace ###
 
@@ -38,7 +38,7 @@ checkout-mobile: &checkout-mobile
   checkout:
     path: *project-folder
 
-attach-mobile: &attach-mobile
+attach-project: &attach-project
   attach_workspace:
     at: *project-folder
 
@@ -168,6 +168,13 @@ jobs:
           paths:
             - node_modules
 
+  linter:
+    <<: *node-config
+    steps:
+      - checkout
+      - *attach-project
+      - run: yarn lint
+
   build-android:
     <<: *android-config
     docker:
@@ -180,7 +187,7 @@ jobs:
       - run:
           name: Download android google services
           command: curl -L -o app/google-services.json $ANDROID_GOOGLE_SERVICES_URI
-      - *attach-mobile
+      - *attach-project
       - *restore-gemfile-cache
       - *bundle-install
       - *save-gemfile-cache
@@ -235,7 +242,7 @@ jobs:
       - run:
           name: Download android fastlane json
           command: curl -L -o fastlane/fastlane-push-for-github-mobile.json $ANDROID_FASTLANE_JSON_URI
-      - *attach-mobile
+      - *attach-project
       - *attach-android
       - *restore-gemfile-cache
       - *bundle-install
@@ -246,7 +253,7 @@ jobs:
     <<: *ios-config
     steps:
       - *checkout-mobile
-      - *attach-mobile
+      - *attach-project
       - *attach-ios
       - *set-ios-ruby-version
       - *restore-gemfile-cache-mac
@@ -269,6 +276,10 @@ jobs:
 requires-yarn: &requires-yarn
   requires:
    - yarn
+
+requires-linter: &requires-linter
+  requires:
+   - linter
 
 master-branch-filter: &master-branch-filter
   filters:
@@ -306,11 +317,14 @@ workflows:
               ignore:
                 - gh-pages
             <<: *any-tag
-      - build-android:
+      - linter:
           <<: *requires-yarn
           <<: *develop-filters
+      - build-android:
+          <<: *requires-linter
+          <<: *develop-filters
       - build-ios:
-          <<: *requires-yarn
+          <<: *requires-linter
           <<: *develop-filters
       - deploy-android:
           requires:

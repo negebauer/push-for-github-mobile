@@ -1,25 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, Text, ActivityIndicator } from 'react-native'
+import {
+  StyleSheet, View, Text, ActivityIndicator,
+} from 'react-native'
 import { color1, color3, color5 } from '../config/colors'
-
-export default function LoadingView({ text, size }) {
-  return (
-    <View style={styles.container}>
-      {text && <Text style={styles.text}>{text}</Text>}
-      <ActivityIndicator size={size} color={color3}/>
-    </View>
-  )
-}
-
-LoadingView.defaultProps = {
-  size: 'large',
-}
-
-LoadingView.propTypes = {
-  text: PropTypes.string,
-  size: PropTypes.string,
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -37,3 +21,22 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 })
+
+export default function LoadingView({ text, size }) {
+  return (
+    <View style={styles.container}>
+      {text && <Text style={styles.text}>{text}</Text>}
+      <ActivityIndicator size={size} color={color3} />
+    </View>
+  )
+}
+
+LoadingView.propTypes = {
+  text: PropTypes.string,
+  size: PropTypes.string,
+}
+
+LoadingView.defaultProps = {
+  text: '',
+  size: 'large',
+}
