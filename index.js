@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native'
+import { AppRegistry, YellowBox } from 'react-native'
 import { Sentry } from 'react-native-sentry'
 import DeviceInfo from 'react-native-device-info'
 import App from './src/App'
@@ -9,3 +9,7 @@ if (!DeviceInfo.isEmulator()) {
 }
 
 AppRegistry.registerComponent(name, () => App)
+
+YellowBox.ignoreWarnings([
+  'Module OAuthManager requires main queue setup since it overrides `init` but doesn\'t implement',
+])
