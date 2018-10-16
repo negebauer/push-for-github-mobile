@@ -1,4 +1,4 @@
-package com.negebauer.GithubPushNotificationsMobile;
+package com.pushforgithub;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "GithubPushNotificationsMobile";
+        return "PushForGithub";
     }
 }
