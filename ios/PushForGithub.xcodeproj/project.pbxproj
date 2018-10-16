@@ -1537,10 +1537,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.PushForGithub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
 				PRODUCT_NAME = PushForGithub;
 				PROVISIONING_PROFILE = "181d9179-399b-44c9-a180-517b5c5f28ac";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.negebauer.PushForGithub";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1571,10 +1571,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.PushForGithub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
 				PRODUCT_NAME = PushForGithub;
 				PROVISIONING_PROFILE = "c53af478-15b2-4e9b-a4ff-692cbba56f57";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.negebauer.PushForGithub";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
