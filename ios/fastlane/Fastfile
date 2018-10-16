@@ -13,6 +13,8 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+require 'spaceship'
+
 default_platform(:ios)
 skip_docs
 
@@ -23,7 +25,6 @@ end
 
 platform :ios do
   before_all do
-    setup_circle_ci
   end
 
   lane :build do
@@ -31,12 +32,14 @@ platform :ios do
   end
 
   lane :build_ci do
+    setup_circle_ci
     match type: 'appstore'
     increment_build_number build_number: version_code
     gym
   end
 
   lane :beta_ci do
+    setup_circle_ci
     next unless version_code > latest_testflight_build_number
     changelog = changelog_from_git_commits
     upload_to_testflight changelog: changelog
@@ -50,7 +53,48 @@ platform :ios do
     upload_to_testflight changelog: changelog
   end
 
+  lane :external_beta_submit_ci do
+    # not submitted
+    # => "testflight.build.state.submit.ready"
+    # submitted
+    # => "testflight.build.state.review.approved"
+    # => "testflight.build.state.testing.active"
+
+    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    Spaceship::Tunes.login
+    Spaceship::Portal.login
+    Spaceship::Portal.client.team_id = team_id
+    
+    app_identifier =  CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    app = Spaceship::Tunes::Application.find(app_identifier)
+    build = app.builds[0]
+    next unless build.external_state == 'testflight.build.state.submit.ready'
+    build.submit_for_testflight_review!
+
+    pre_release_version_id = Spaceship::client.request(:get) { |req|
+      req.url("https://appstoreconnect.apple.com/iris/v1/preReleaseVersions?filter%5Bapp%5D=#{app.apple_id}&filter%5Bbuilds.expired%5D=false&filter%5Bbuilds.processingState%5D=PROCESSING,VALID&filter%5Bplatform%5D=IOS&limit=1&sort=-version")
+      req.headers['Accept'] = 'application/vnd.api+json'
+    }.body['data'][0]['id']
+
+    build_id = Spaceship::client.request(:get) { |req|
+      req.url("https://appstoreconnect.apple.com/iris/v1/builds?filter%5BpreReleaseVersion%5D=#{pre_release_version_id}&filter%5BprocessingState%5D=PROCESSING,VALID&limit=1&sort=-version")
+      req.headers['Accept'] = 'application/vnd.api+json'
+    }.body['data'][0]['id']
+
+    group_id = 'c5acefa0-6650-4dcd-a694-26a56da8b356'
+    body = { data: [{
+      id: group_id,
+      type: 'betaGroups',
+    }]}
+    Spaceship::client.request(:post) do |req|
+      req.url("https://appstoreconnect.apple.com/iris/v1/builds/#{build_id}/relationships/betaGroups")
+      req.body = body.to_json
+      req.headers['Content-Type'] = 'application/vnd.api+json'
+    end
+  end
+
   lane :deploy_ci do
+    setup_circle_ci
     puts 'TODO'
   end
 end
