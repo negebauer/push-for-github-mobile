@@ -11,7 +11,6 @@ yarn-cache-key: &yarn-cache-key yarn-v8-{{ checksum "yarn.lock" }}
 yarn-cache-key-mac: &yarn-cache-key-mac yarn-v8-mac-{{ checksum "../yarn.lock" }}
 gemfile-cache-key: &gemfile-cache-key bundle-v8-{{ checksum "Gemfile.lock" }}
 gemfile-cache-key-mac: &gemfile-cache-key-mac bundle-v8-mac-{{ checksum "Gemfile.lock" }}
-xcode-cache-key: &xcode-cache-key xcode-v8
 cocapods-cache-key: &cocoapods-cache-key cocoapods-v9
 
 ### Configs ###
@@ -98,10 +97,6 @@ restore-gemfile-cache-mac: &restore-gemfile-cache-mac
   restore_cache:
     key: *gemfile-cache-key-mac
 
-restore-xcode-cache: &restore-xcode-cache
-  restore_cache:
-    key: *xcode-cache-key
-
 restore-cocoapods-cache: &restore-cocoapods-cache
   restore_cache:
     key: *cocoapods-cache-key
@@ -147,12 +142,6 @@ save-gemfile-cache-mac: &save-gemfile-cache-mac
     key: *gemfile-cache-key-mac
     paths:
       - vendor/bundle
-
-save-xcode-cache: &save-xcode-cache
-  save_cache:
-    key: *xcode-cache-key
-    paths:
-      - ~/Library/Developer/Xcode/DerivedData
 
 save-cocoapods-cache: &save-cocoapods-cache
   save_cache:
@@ -227,9 +216,7 @@ jobs:
           command: if [[ ! -e ~/.cocoapods/repos ]]; then curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf; fi
       - *save-cocoapods-cache
       - run: pod install
-      - *restore-xcode-cache
       - *fastlane-build-ci
-      - *save-xcode-cache
       - store_artifacts:
           path: GithubPushNotificationsMobile.ipa
           destination: ./GithubPushNotificationsMobile.ipa
