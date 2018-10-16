@@ -14,9 +14,19 @@
 
 Obtain github notifications as push notifications in your phone
 
-You can join de android beta at https://play.google.com/store/apps/details?id=com.negebauer.GithubPushNotificationsMobile
+# Download
 
-iOS will be available soon in the AppStore
+## Android
+
+Download the latest version at the [Play store](https://play.google.com/store/apps/details?id=com.negebauer.GithubPushNotificationsMobile)
+
+You can also [join the beta](https://play.google.com/apps/testing/com.negebauer.GithubPushNotificationsMobile)
+
+## iOS
+
+The app isn't yet published on the App store as it doesn't have many features right now (only getting notifications)
+
+But you can [join the beta with Testflight](https://testflight.apple.com/join/eQ6LkQvc)
 
 <!-- Badges -->
 
