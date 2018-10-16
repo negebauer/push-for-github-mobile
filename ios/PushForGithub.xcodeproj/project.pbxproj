@@ -12,7 +12,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* GithubPushNotificationsMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */; };
+		00E356F31AD99517003FC87E /* PushForGithubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PushForGithubTests.m */; };
 		0308E4C021197BE6005A0D51 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E4BD21197BDB005A0D51 /* libRNDeviceInfo.a */; };
 		0308E4C721197C2A005A0D51 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E4C621197C25005A0D51 /* libReactNativeConfig.a */; };
 		03C9C5372103E39100F6D3B7 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C9C51A2103E38700F6D3B7 /* libRCTPushNotification.a */; };
@@ -26,7 +26,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		24838764DCD97F6372234B6F /* libPods-GithubPushNotificationsMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A6D9E385F5B9C8FFC9ADC7 /* libPods-GithubPushNotificationsMobile.a */; };
+		24838764DCD97F6372234B6F /* libPods-PushForGithub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A6D9E385F5B9C8FFC9ADC7 /* libPods-PushForGithub.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -38,7 +38,7 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* GithubPushNotificationsMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* PushForGithubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PushForGithubTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -88,7 +88,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = GithubPushNotificationsMobile;
+			remoteInfo = PushForGithub;
 		};
 		0308E4BC21197BDB005A0D51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -165,7 +165,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "GithubPushNotificationsMobile-tvOS";
+			remoteInfo = "PushForGithub-tvOS";
 		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -379,29 +379,29 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* GithubPushNotificationsMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubPushNotificationsMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* PushForGithubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PushForGithubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubPushNotificationsMobileTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* PushForGithubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushForGithubTests.m; sourceTree = "<group>"; };
 		0308E4B721197BDB005A0D51 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		0308E4C121197C25005A0D51 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
-		03835BBB210043BC002FFCB4 /* GithubPushNotificationsMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GithubPushNotificationsMobile.entitlements; path = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements; sourceTree = "<group>"; };
+		03835BBB210043BC002FFCB4 /* PushForGithub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PushForGithub.entitlements; path = PushForGithub/PushForGithub.entitlements; sourceTree = "<group>"; };
 		03C9C5072103E38700F6D3B7 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		03E9801121194F200011F127 /* RNSentry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSentry.xcodeproj; path = "../node_modules/react-native-sentry/ios/RNSentry.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* GithubPushNotificationsMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubPushNotificationsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = GithubPushNotificationsMobile/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = GithubPushNotificationsMobile/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* PushForGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushForGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PushForGithub/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PushForGithub/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GithubPushNotificationsMobile/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GithubPushNotificationsMobile/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GithubPushNotificationsMobile/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PushForGithub/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PushForGithub/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PushForGithub/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		1C91DE9D55A1CCEFFF9AB2EA /* Pods-GithubPushNotificationsMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubPushNotificationsMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		1C91DE9D55A1CCEFFF9AB2EA /* Pods-PushForGithub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushForGithub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushForGithub/Pods-PushForGithub.debug.xcconfig"; sourceTree = "<group>"; };
 		1F3014B61F764F6E87043193 /* libOAuthManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libOAuthManager.a; sourceTree = "<group>"; };
-		27032726DCB05B01F92480D9 /* Pods-GithubPushNotificationsMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubPushNotificationsMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GithubPushNotificationsMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27032726DCB05B01F92480D9 /* Pods-PushForGithub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushForGithub.release.xcconfig"; path = "Pods/Target Support Files/Pods-PushForGithub/Pods-PushForGithub.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* PushForGithub-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PushForGithub-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* PushForGithub-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PushForGithub-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1145B5FDB645F39F3FCC60 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		E69C1CE51B9C477FA3402AAD /* OAuthManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = OAuthManager.xcodeproj; path = "../node_modules/react-native-oauth/ios/OAuthManager.xcodeproj"; sourceTree = "<group>"; };
-		E6A6D9E385F5B9C8FFC9ADC7 /* libPods-GithubPushNotificationsMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GithubPushNotificationsMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6A6D9E385F5B9C8FFC9ADC7 /* libPods-PushForGithub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushForGithub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,7 +442,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				24838764DCD97F6372234B6F /* libPods-GithubPushNotificationsMobile.a in Frameworks */,
+				24838764DCD97F6372234B6F /* libPods-PushForGithub.a in Frameworks */,
 				D0A02E5CF74945E5A2B4640C /* libz.tbd in Frameworks */,
 				E9C12EF1848F4FD4BE933534 /* libOAuthManager.a in Frameworks */,
 			);
@@ -516,13 +516,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* GithubPushNotificationsMobileTests */ = {
+		00E356EF1AD99517003FC87E /* PushForGithubTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* GithubPushNotificationsMobileTests.m */,
+				00E356F21AD99517003FC87E /* PushForGithubTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = GithubPushNotificationsMobileTests;
+			path = PushForGithubTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -603,10 +603,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* GithubPushNotificationsMobile */ = {
+		13B07FAE1A68108700A75B9A /* PushForGithub */ = {
 			isa = PBXGroup;
 			children = (
-				03835BBB210043BC002FFCB4 /* GithubPushNotificationsMobile.entitlements */,
+				03835BBB210043BC002FFCB4 /* PushForGithub.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -615,7 +615,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = GithubPushNotificationsMobile;
+			name = PushForGithub;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -645,7 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				E6A6D9E385F5B9C8FFC9ADC7 /* libPods-GithubPushNotificationsMobile.a */,
+				E6A6D9E385F5B9C8FFC9ADC7 /* libPods-PushForGithub.a */,
 				5C1145B5FDB645F39F3FCC60 /* libz.tbd */,
 			);
 			name = Frameworks;
@@ -654,8 +654,8 @@
 		4C47D649C5DB8BA6EB4B8059 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C91DE9D55A1CCEFFF9AB2EA /* Pods-GithubPushNotificationsMobile.debug.xcconfig */,
-				27032726DCB05B01F92480D9 /* Pods-GithubPushNotificationsMobile.release.xcconfig */,
+				1C91DE9D55A1CCEFFF9AB2EA /* Pods-PushForGithub.debug.xcconfig */,
+				27032726DCB05B01F92480D9 /* Pods-PushForGithub.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -714,9 +714,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* GithubPushNotificationsMobile */,
+				13B07FAE1A68108700A75B9A /* PushForGithub */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* GithubPushNotificationsMobileTests */,
+				00E356EF1AD99517003FC87E /* PushForGithubTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				03835AD12100426F002FFCB4 /* Recovered References */,
@@ -730,10 +730,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* GithubPushNotificationsMobile.app */,
-				00E356EE1AD99517003FC87E /* GithubPushNotificationsMobileTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* PushForGithub.app */,
+				00E356EE1AD99517003FC87E /* PushForGithubTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* PushForGithub-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* PushForGithub-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -750,9 +750,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* GithubPushNotificationsMobileTests */ = {
+		00E356ED1AD99517003FC87E /* PushForGithubTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobileTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PushForGithubTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -763,14 +763,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = GithubPushNotificationsMobileTests;
-			productName = GithubPushNotificationsMobileTests;
-			productReference = 00E356EE1AD99517003FC87E /* GithubPushNotificationsMobileTests.xctest */;
+			name = PushForGithubTests;
+			productName = PushForGithubTests;
+			productReference = 00E356EE1AD99517003FC87E /* PushForGithubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* GithubPushNotificationsMobile */ = {
+		13B07F861A680F5B00A75B9A /* PushForGithub */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PushForGithub" */;
 			buildPhases = (
 				0ED1E3B8D0517B28278117A9 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -785,14 +785,14 @@
 			);
 			dependencies = (
 			);
-			name = GithubPushNotificationsMobile;
+			name = PushForGithub;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* GithubPushNotificationsMobile.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* PushForGithub.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* PushForGithub-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PushForGithub-tvOS" */;
 			buildPhases = (
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -803,14 +803,14 @@
 			);
 			dependencies = (
 			);
-			name = "GithubPushNotificationsMobile-tvOS";
-			productName = "GithubPushNotificationsMobile-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS.app */;
+			name = "PushForGithub-tvOS";
+			productName = "PushForGithub-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* PushForGithub-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* PushForGithub-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PushForGithub-tvOSTests" */;
 			buildPhases = (
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
@@ -821,9 +821,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "GithubPushNotificationsMobile-tvOSTests";
-			productName = "GithubPushNotificationsMobile-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests.xctest */;
+			name = "PushForGithub-tvOSTests";
+			productName = "PushForGithub-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* PushForGithub-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -865,7 +865,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "GithubPushNotificationsMobile" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PushForGithub" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -948,10 +948,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* GithubPushNotificationsMobile */,
-				00E356ED1AD99517003FC87E /* GithubPushNotificationsMobileTests */,
-				2D02E47A1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* PushForGithub */,
+				00E356ED1AD99517003FC87E /* PushForGithubTests */,
+				2D02E47A1E0B4A5D006451C7 /* PushForGithub-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* PushForGithub-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1327,7 +1327,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GithubPushNotificationsMobile-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PushForGithub-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1360,7 +1360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PushForGithub/Pods-PushForGithub-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4CA9EC3FF3434C2C98A3DD88 /* Upload Debug Symbols to Sentry */ = {
@@ -1389,7 +1389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubPushNotificationsMobile/Pods-GithubPushNotificationsMobile-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PushForGithub/Pods-PushForGithub-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1399,7 +1399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* GithubPushNotificationsMobileTests.m in Sources */,
+				00E356F31AD99517003FC87E /* PushForGithubTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1425,7 +1425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* GithubPushNotificationsMobileTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* PushForGithubTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1434,12 +1434,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* GithubPushNotificationsMobile */;
+			target = 13B07F861A680F5B00A75B9A /* PushForGithub */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* GithubPushNotificationsMobile-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* PushForGithub-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1451,7 +1451,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = GithubPushNotificationsMobile;
+			path = PushForGithub;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1469,7 +1469,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = GithubPushNotificationsMobileTests/Info.plist;
+				INFOPLIST_FILE = PushForGithubTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1481,7 +1481,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubPushNotificationsMobile.app/GithubPushNotificationsMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PushForGithub.app/PushForGithub";
 			};
 			name = Debug;
 		};
@@ -1494,7 +1494,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = GithubPushNotificationsMobileTests/Info.plist;
+				INFOPLIST_FILE = PushForGithubTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1506,16 +1506,16 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubPushNotificationsMobile.app/GithubPushNotificationsMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PushForGithub.app/PushForGithub";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C91DE9D55A1CCEFFF9AB2EA /* Pods-GithubPushNotificationsMobile.debug.xcconfig */;
+			baseConfigurationReference = 1C91DE9D55A1CCEFFF9AB2EA /* Pods-PushForGithub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PushForGithub/PushForGithub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 166;
@@ -1527,7 +1527,7 @@
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = GithubPushNotificationsMobile/Info.plist;
+				INFOPLIST_FILE = PushForGithub/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -1538,7 +1538,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
-				PRODUCT_NAME = GithubPushNotificationsMobile;
+				PRODUCT_NAME = PushForGithub;
 				PROVISIONING_PROFILE = "181d9179-399b-44c9-a180-517b5c5f28ac";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1547,10 +1547,10 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27032726DCB05B01F92480D9 /* Pods-GithubPushNotificationsMobile.release.xcconfig */;
+			baseConfigurationReference = 27032726DCB05B01F92480D9 /* Pods-PushForGithub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GithubPushNotificationsMobile/GithubPushNotificationsMobile.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PushForGithub/PushForGithub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 166;
@@ -1561,7 +1561,7 @@
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = GithubPushNotificationsMobile/Info.plist;
+				INFOPLIST_FILE = PushForGithub/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -1572,7 +1572,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.negebauer.GithubPushNotificationsMobile;
-				PRODUCT_NAME = GithubPushNotificationsMobile;
+				PRODUCT_NAME = PushForGithub;
 				PROVISIONING_PROFILE = "c53af478-15b2-4e9b-a4ff-692cbba56f57";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.negebauer.GithubPushNotificationsMobile";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1595,7 +1595,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = "GithubPushNotificationsMobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "PushForGithub-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1605,7 +1605,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.GithubPushNotificationsMobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PushForGithub-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1629,7 +1629,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = "GithubPushNotificationsMobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "PushForGithub-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1639,7 +1639,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.GithubPushNotificationsMobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PushForGithub-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1662,7 +1662,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = "GithubPushNotificationsMobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "PushForGithub-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1672,10 +1672,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.GithubPushNotificationsMobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PushForGithub-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubPushNotificationsMobile-tvOS.app/GithubPushNotificationsMobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PushForGithub-tvOS.app/PushForGithub-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -1695,7 +1695,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager/**",
 				);
-				INFOPLIST_FILE = "GithubPushNotificationsMobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "PushForGithub-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1705,10 +1705,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.GithubPushNotificationsMobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PushForGithub-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubPushNotificationsMobile-tvOS.app/GithubPushNotificationsMobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PushForGithub-tvOS.app/PushForGithub-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1792,7 +1792,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobileTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PushForGithubTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1801,7 +1801,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PushForGithub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1810,7 +1810,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PushForGithub-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1819,7 +1819,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "GithubPushNotificationsMobile-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PushForGithub-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1828,7 +1828,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "GithubPushNotificationsMobile" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PushForGithub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
