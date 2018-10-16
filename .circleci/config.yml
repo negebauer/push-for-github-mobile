@@ -57,11 +57,13 @@ set-ios-ruby-version: &set-ios-ruby-version
 
 ### Env variables ###
 
-set-env-api-url: &set-env-api-url
-  run: echo "API_URL=$ENV_API_URL" >> ../.env
-
-set-env-gcm-send-id: &set-env-gcm-send-id
-  run: echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" >> ../.env
+set-env-variables: &set-env-variables
+  run:
+    name: 'Set env variables'
+    command: |
+      echo "API_URL=$ENV_API_URL" >> ../.env
+      echo "GCM_SENDER_ID=$ENV_GCM_SENDER_ID" >> ../.env
+      echo "SENTRY_API_URL=$ENV_SENTRY_API_URL" >> ../.env
 
 ### Fastlane ###
 
@@ -182,8 +184,7 @@ jobs:
       - *restore-gemfile-cache
       - *bundle-install
       - *save-gemfile-cache
-      - *set-env-api-url
-      - *set-env-gcm-send-id
+      - *set-env-variables
       - *fastlane-build-ci
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release.apk
@@ -208,8 +209,7 @@ jobs:
       - *restore-gemfile-cache-mac
       - *bundle-install
       - *save-gemfile-cache-mac
-      - *set-env-api-url
-      - *set-env-gcm-send-id
+      - *set-env-variables
       - *restore-cocoapods-cache
       - run:
           name: Download cocoapods
