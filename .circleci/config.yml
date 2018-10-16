@@ -218,15 +218,15 @@ jobs:
       - run: pod install
       - *fastlane-build-ci
       - store_artifacts:
-          path: GithubPushNotificationsMobile.ipa
-          destination: ./GithubPushNotificationsMobile.ipa
+          path: PushForGithub.ipa
+          destination: ./PushForGithub.ipa
       - store_artifacts:
-          path: GithubPushNotificationsMobile.app.dSYM.zip
-          destination: ./GithubPushNotificationsMobile.app.dSYM.zip
+          path: PushForGithub.app.dSYM.zip
+          destination: ./PushForGithub.app.dSYM.zip
       - persist_to_workspace:
           root: *ios-folder
           paths:
-            - GithubPushNotificationsMobile.ipa
+            - PushForGithub.ipa
 
   beta-android:
     <<: *android-config
