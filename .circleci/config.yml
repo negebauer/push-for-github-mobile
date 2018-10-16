@@ -334,7 +334,7 @@ workflows:
   daily-beta:
     triggers:
       - schedule:
-          cron: '15 14 * * *'
+          cron: '0 19 * * *'
           <<: *master-branch-filter
     jobs:
       - yarn
@@ -351,7 +351,7 @@ workflows:
   weekly-beta:
     triggers:
       - schedule:
-          cron: '15 14 * * 1'
+          cron: '30 19 * * 2'
           <<: *master-branch-filter
     jobs:
       - beta-external-ios
