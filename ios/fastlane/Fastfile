@@ -54,11 +54,7 @@ platform :ios do
   end
 
   lane :external_beta_submit_ci do
-    # not submitted
-    # => "testflight.build.state.submit.ready"
-    # submitted
-    # => "testflight.build.state.review.approved"
-    # => "testflight.build.state.testing.active"
+    setup_circle_ci
 
     team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
     Spaceship::Tunes.login
@@ -68,6 +64,12 @@ platform :ios do
     app_identifier =  CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     app = Spaceship::Tunes::Application.find(app_identifier)
     build = app.builds[0]
+
+    # not submitted
+    # => "testflight.build.state.submit.ready"
+    # submitted
+    # => "testflight.build.state.review.approved"
+    # => "testflight.build.state.testing.active"
     next unless build.external_state == 'testflight.build.state.submit.ready'
     build.submit_for_testflight_review!
 
