@@ -1,4 +1,4 @@
-# Github push notifications for mobile
+# GithubPushNotificationsMobile
 
 <p align="center">
   <a href="https://github.com/negebauer/github-push-notifications-mobile">
