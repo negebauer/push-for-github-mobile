@@ -173,7 +173,7 @@ jobs:
     steps:
       - checkout
       - *attach-project
-      - run: yarn linter
+      - run: yarn lint
 
   build-android:
     <<: *android-config
