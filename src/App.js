@@ -155,7 +155,7 @@ export default class App extends React.Component {
     };
 
     this.loadAccount = this.loadAccount.bind(this);
-    this.async = this.async.bind(this);
+    this.authorize = this.authorize.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.notificationsFailed = this.notificationsFailed.bind(this);
