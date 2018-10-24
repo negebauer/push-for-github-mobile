@@ -66,6 +66,11 @@ set-env-variables: &set-env-variables
 
 ### Fastlane ###
 
+download-android-fastlane-json: &download-android-fastlane-json
+  run:
+    name: Download android fastlane json
+    command: curl -L -o fastlane/fastlane-push-for-github-mobile.json $ANDROID_FASTLANE_JSON_URI
+
 fastlane-build-ci: &fastlane-build-ci
   run: bundle exec fastlane build_ci
 
@@ -176,6 +181,7 @@ jobs:
       - run:
           name: Download android google services
           command: curl -L -o app/google-services.json $ANDROID_GOOGLE_SERVICES_URI
+      - *download-android-fastlane-json
       - *attach-project
       - *restore-gemfile-cache
       - *bundle-install
@@ -224,9 +230,7 @@ jobs:
     <<: *android-config
     steps:
       - *checkout-mobile
-      - run:
-          name: Download android fastlane json
-          command: curl -L -o fastlane/fastlane-push-for-github-mobile.json $ANDROID_FASTLANE_JSON_URI
+      - *download-android-fastlane-json
       - *attach-project
       - *attach-android
       - *restore-gemfile-cache
