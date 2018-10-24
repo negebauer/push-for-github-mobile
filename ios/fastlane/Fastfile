@@ -14,14 +14,10 @@
 # update_fastlane
 
 require 'spaceship'
+import '../../assets/Fastfile'
 
 default_platform(:ios)
 skip_docs
-
-def version_code
-  commit_count = sh('git rev-list --count master')
-  Integer(commit_count) + 130
-end
 
 def spaceship_request(method, url, body = nil)
   response = Spaceship::client.request(method) { |req|
@@ -99,6 +95,14 @@ def spaceship_notify_external_testers(build_id)
   spaceship_request(:post, url, body)
 end
 
+def changelog
+  changelog_from_git_commits
+    .split("\n")
+    .select { |string|
+      string.index('feat:') || string.index('fix:') || string.index('feat(') || string.index('fix(')
+    }.join("\n")
+end
+
 platform :ios do
   before_all do
     setup_circle_ci
@@ -109,6 +113,8 @@ platform :ios do
   end
 
   lane :build_ci do
+    next unless version_code > latest_testflight_build_number
+
     match type: 'appstore'
     increment_build_number build_number: version_code
     gym
@@ -116,8 +122,8 @@ platform :ios do
 
   lane :beta_ci do
     next unless version_code > latest_testflight_build_number
-    # changelog = changelog_from_git_commits
-    changelog = "app update"
+
+    changelog = feat_and_fixes_changelog
     upload_to_testflight(
       notify_external_testers: false,
       changelog: changelog,
@@ -128,7 +134,7 @@ platform :ios do
     match type: 'appstore'
     increment_build_number build_number: version_code
     gym
-    changelog = changelog_from_git_commits
+    changelog = feat_and_fixes_changelog
     upload_to_testflight(
       notify_external_testers: false,
       changelog: changelog,
@@ -142,6 +148,7 @@ platform :ios do
     build, build_id = spaceship_get_build_and_build_id()
     puts 'wont submit' unless build.ready_to_submit?
     next unless build.ready_to_submit?
+
     spaceship_submit_for_testflight_review(build)
     spaceship_disable_auto_notify(build)
     spaceship_add_external_testers(build_id)
@@ -151,10 +158,15 @@ platform :ios do
     build, build_id = spaceship_get_build_and_build_id()
     puts 'wont notify' if build.active?
     next if build.active?
+    
     spaceship_notify_external_testers(build_id)
   end
 
   lane :deploy_ci do
     puts 'TODO'
+  end
+
+  lane :test do
+    version_code
   end
 end
