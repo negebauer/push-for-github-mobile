@@ -362,14 +362,14 @@ workflows:
   weekly-submit-external-beta:
     triggers:
       - schedule:
-          cron: '30 14 * * 0'
+          cron: '30 14 * * 0,3'
           <<: *master-branch-filter
     jobs:
       - beta-submit-external-ios
   weekly-notify-external-beta:
     triggers:
       - schedule:
-          cron: '0 13 * * 1'
+          cron: '0 13 * * 1,4'
           <<: *master-branch-filter
     jobs:
       - beta-notify-external-ios
