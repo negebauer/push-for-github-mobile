@@ -17,7 +17,14 @@ platform :android do
     gradle task: 'clean assembleRelease'
   end
 
+  lane :deploy do
+    gradle task: 'clean assembleRelease'
+    upload_to_play_store
+  end
+
   lane :build_ci do
+    next unless version_code > google_play_track_version_codes(track: 'beta').max
+
     file_path = '../app/build.gradle'
     text = File.read(file_path)
     replace = text.gsub(/versionCode \d+/, "versionCode #{version_code}")
@@ -25,13 +32,9 @@ platform :android do
     gradle task: 'clean assembleRelease'
   end
 
-  lane :deploy do
-    gradle task: 'clean assembleRelease'
-    upload_to_play_store
-  end
-
   lane :beta_ci do
     next unless version_code > google_play_track_version_codes(track: 'beta').max
+
     changelog = changelog_sliced
     changelog_path = "./metadata/android/en-US/changelogs/#{version_code}.txt"
     File.open(changelog_path, 'w') { |file| file.puts changelog }

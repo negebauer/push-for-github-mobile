@@ -148,6 +148,7 @@ platform :ios do
     build, build_id = spaceship_get_build_and_build_id()
     puts 'wont submit' unless build.ready_to_submit?
     next unless build.ready_to_submit?
+
     spaceship_submit_for_testflight_review(build)
     spaceship_disable_auto_notify(build)
     spaceship_add_external_testers(build_id)
@@ -157,6 +158,7 @@ platform :ios do
     build, build_id = spaceship_get_build_and_build_id()
     puts 'wont notify' if build.active?
     next if build.active?
+    
     spaceship_notify_external_testers(build_id)
   end
 
