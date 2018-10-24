@@ -3,12 +3,13 @@
 # Available actions
 #   https://docs.fastlane.tools/actions
 
+import '../../assets/Fastfile'
+
 default_platform :android
 skip_docs
 
-def version_code
-  commit_count = sh('git rev-list --count master')
-  Integer(commit_count) + 130
+def changelog_sliced
+  (feat_and_fixes_changelog || '').slice(0..498)
 end
 
 platform :android do
@@ -31,7 +32,7 @@ platform :android do
 
   lane :beta_ci do
     next unless version_code > google_play_track_version_codes(track: 'beta').max
-    changelog = (changelog_from_git_commits || '').slice(0..498)
+    changelog = changelog_sliced
     changelog_path = "./metadata/android/en-US/changelogs/#{version_code}.txt"
     File.open(changelog_path, 'w') { |file| file.puts changelog }
     upload_to_play_store(
@@ -46,7 +47,7 @@ platform :android do
     replace = text.gsub(/versionCode \d+/, "versionCode #{version_code}")
     File.open(file_path, 'w') { |file| file.puts replace }
     gradle task: 'clean assembleRelease'
-    changelog = (changelog_from_git_commits || '').slice(0..498)
+    changelog = changelog_sliced
     changelog_path = "./metadata/android/en-US/changelogs/#{version_code}.txt"
     File.open(changelog_path, 'w') { |file| file.puts changelog }
     upload_to_play_store(
