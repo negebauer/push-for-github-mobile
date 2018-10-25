@@ -23,8 +23,6 @@ platform :android do
   end
 
   lane :build_ci do
-    next unless version_code > google_play_track_version_codes(track: 'beta').max
-
     file_path = '../app/build.gradle'
     text = File.read(file_path)
     replace = text.gsub(/versionCode \d+/, "versionCode #{version_code}")

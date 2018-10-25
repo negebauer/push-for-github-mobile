@@ -113,8 +113,6 @@ platform :ios do
   end
 
   lane :build_ci do
-    next unless version_code > latest_testflight_build_number
-
     match type: 'appstore'
     increment_build_number build_number: version_code
     gym
