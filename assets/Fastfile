@@ -1,7 +1,7 @@
 def version_code
   commit_count = sh('git rev-list --count master')
   build_bump = File.read("#{__dir__}/buildBump")
-  version = Integer(commit_count) + Integer(build_bump)
+  Integer(commit_count) + Integer(build_bump)
 end
 
 def feat_and_fixes_changelog
