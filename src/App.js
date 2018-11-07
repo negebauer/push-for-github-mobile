@@ -224,7 +224,7 @@ export default class App extends React.Component {
       [
         { text: 'Cancel', onPress: () => { }, style: 'cancel' },
         {
-          text: 'Open',
+          text: 'Open url',
           onPress: () => Linking.canOpenURL(url).then(canOpen => canOpen && Linking.openURL(url)),
         },
       ],
