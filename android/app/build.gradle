@@ -98,6 +98,7 @@ def enableProguardInReleaseBuilds = false
 def pass = getPassword("github-push-notifications-mobile-android-keystore")
 
 android {
+    useLibrary 'org.apache.http.legacy'
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
