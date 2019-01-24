@@ -346,34 +346,34 @@ workflows:
           requires:
             - build-ios
           <<: *deploy-filters
-  daily-beta:
-    triggers:
-      - schedule:
-          cron: '0 14 * * *'
-          <<: *master-branch-filter
-    jobs:
-      - yarn
-      - build-android:
-          <<: *requires-yarn
-      - build-ios:
-          <<: *requires-yarn
-      - beta-android:
-          requires:
-            - build-android
-      - beta-ios:
-          requires:
-            - build-ios
-  weekly-submit-external-beta:
-    triggers:
-      - schedule:
-          cron: '30 14 * * 0'
-          <<: *master-branch-filter
-    jobs:
-      - beta-submit-external-ios
-  weekly-notify-external-beta:
-    triggers:
-      - schedule:
-          cron: '0 13 * * 1'
-          <<: *master-branch-filter
-    jobs:
-      - beta-notify-external-ios
+  # daily-beta:
+  #   triggers:
+  #     - schedule:
+  #         cron: '0 14 * * *'
+  #         <<: *master-branch-filter
+  #   jobs:
+  #     - yarn
+  #     - build-android:
+  #         <<: *requires-yarn
+  #     - build-ios:
+  #         <<: *requires-yarn
+  #     - beta-android:
+  #         requires:
+  #           - build-android
+  #     - beta-ios:
+  #         requires:
+  #           - build-ios
+  # weekly-submit-external-beta:
+  #   triggers:
+  #     - schedule:
+  #         cron: '30 14 * * 0'
+  #         <<: *master-branch-filter
+  #   jobs:
+  #     - beta-submit-external-ios
+  # weekly-notify-external-beta:
+  #   triggers:
+  #     - schedule:
+  #         cron: '0 13 * * 1'
+  #         <<: *master-branch-filter
+  #   jobs:
+  #     - beta-notify-external-ios
